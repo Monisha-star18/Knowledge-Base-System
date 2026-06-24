@@ -1,0 +1,74 @@
+:root {
+  --color-primary:      #E8440A;
+  --color-primary-dark: #C73A08;
+
+  --background:    linear-gradient(135deg, #E8440A 0%, #ff6b35 60%, #C73A08 100%);
+  --card-a:  linear-gradient(135deg, #E8440A, #C73A08);
+  --card-b:  linear-gradient(135deg, #C73A08, #8B2505);
+  --footer-bg:  linear-gradient(90deg, #C73A08, #E8440A);
+
+  --nav-bg:       #ffffff;
+  --white-text:#ffffff;
+  --text-on-white:#E8440A;
+}
+
+/* navbar */
+/* ----------------------------------------------------------------- */
+.navbar{background-color: var(--nav-bg);border-bottom: 1px solid #f0ede8;}
+
+/* navbard*/
+.navbar-brand{color: #E8440A}
+
+/* nablink */
+.nav-link button:hover
+{
+    color: var(--color-primary-dark);
+    border: 1px solid var(--color-primary-dark) !important;
+    /* background-color: var(--grad-card-b) !important; */
+}
+/* ----------------------------------------------------------------- */
+
+/* landing page */
+/* ----------------------------------------------------------------- */
+.landing{background: var(--background);}
+.landing-content { color: var(--white-text);}
+.tag-line {color: var(--color-primary);}
+
+.Features{ background: var(--background);}
+
+footer{background-color: var(--color-primary); color: var(--white-text);}
+
+.about-para{color: var(--color-primary);}
+
+.landing-svg{
+    width: 100%;
+    max-width: 500px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform: translateY(0);}
+    50%{transform: translateY(-40px);}
+    100%{transform: translateY(0);}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .landing {
+        height: 650px !important;
+    }
+}
+
+h1 {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 3rem;
+    font-weight: 700;
+    font-size: 70px;
+    letter-spacing: -0.055em;
+    line-height: 71px;
+}
+
+h3{    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+html {
+    scroll-behavior: smooth;
+}
