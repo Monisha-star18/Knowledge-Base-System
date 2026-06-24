@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Monisha",
+      "lastName": "R",
+      "email": "monisha@gmail.com",
+      "userId": "MON123",
+      "role": "Reader"
+    }
+  ]
+}
