@@ -1,12 +1,26 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "firstName": "Monisha",
       "lastName": "R",
       "email": "monisha@gmail.com",
       "userId": "MON123",
       "role": "Reader"
+    },
+    {
+      "firstName": "Moni",
+      "lastName": "Ravi",
+      "email": "monishar@gmail.com",
+      "userId": "MON1234",
+      "password": "Moni1805@",
+      "dateOfBirth": "2005-05-18",
+      "gender": "Female",
+      "role": "Author",
+      "bio": "A passionate content creator who loves sharing knowledge about technology, programming, and modern web development. Committed to making complex topics simple and accessible for everyone.",
+      "createdDate": "2026-06-25T05:02:28.011Z",
+      "id": "1vEHgs8MIS4"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

@@ -83,6 +83,8 @@ $(document).ready(function()
     });
 
     // User ID
+    $("#s-userId") .on('input',function(){validateInput("#s-userId","#sd-userId",null,"User ID is required")}) 
+
     let userIdTimer;
     $("#s-userId").on("input", function () 
     {
@@ -130,6 +132,15 @@ $(document).ready(function()
     {
         return $("input[name='gender']:checked").length > 0;
     }
+
+    $("input[name='gender']").on("change", function ()
+    {
+        if ($("input[name='gender']:checked").length > 0)
+        {
+            $("#sd-gender").hide().text("");
+            $("input[name='gender']").removeClass("is-invalid");
+        }
+    });
 
 
     //role
@@ -198,8 +209,15 @@ $(document).ready(function()
             $("#sd-gender").hide().text("");
         }
 
-        //user function cd 
-        
+        //date
+        const dobValid = isDate($("#s-dateOfBirth").val(), 1946, 2008);
+
+        if (!dobValid)
+        {
+            $("#s-dateOfBirth").addClass("is-invalid");
+            $("#sd-dateOfBirth").show().text("Please enter a valid Date of Birth");
+        }
+                
 
         // Run all field validations
         const allValid = [
@@ -209,6 +227,7 @@ $(document).ready(function()
             validateInput("#s-password",       "#sd-password",         passwordRegex, "Password is required",     "8–15 chars with uppercase, lowercase, digit and special character"),
             validateInput("#s-role",            "#sd-role",             null,          "Please select a role"),
             validateInput("#s-bio",             "#sd-bio",              null,          "Bio is required"),
+            validateInput("#s-userId","#sd-userId",null,"User ID is required"),
             validateConfirmPassword(),
             isGenderSelected(),
             isDate($("#s-dateOfBirth").val(), 1946, 2008)
@@ -311,24 +330,7 @@ $(document).ready(function()
 
 
 
-    //role
-
-
-
-
-
-
-
-
-
-
-
-
-    //userid 
-
-
-
-    //bio 
+   
 
 
     
