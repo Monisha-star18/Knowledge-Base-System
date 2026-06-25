@@ -83,6 +83,7 @@ p.sub {
     padding: 0.48rem 1.1rem; border: 1.5px solid #CBD5E1;
     background: #fff; color: #475569;
     transition: background 0.18s, transform 0.15s;
+    text-decoration: none;
 }
 .btn-add-request:hover {  background: #F8FAFC; transform: translateY(-2px); }
 
