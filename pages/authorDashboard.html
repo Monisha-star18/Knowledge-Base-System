@@ -3,9 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>authorDashboard</title>
+    <title>Welcome </title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <!-- external css file -->
+     <link href="../styles/theme.css" rel="stylesheet">
+     <link href="../styles/authorDashboard.css" rel="stylesheet"
 </head>
 <body>
+
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container d-flex align-items-center">
+
+            <!-- navbar Logo/brand -->
+            <a class="navbar-brand" href="#">
+                <i class="fa-brands fa-readme text-drak"></i>
+                InsightHub
+            </a>
+
+            <!-- humburger button on collapse  -->
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <i class="fas fa-bars"></i> 
+            </button>
+
+            <!-- navbar links/menu -->
+            <div class="collapse navbar-collapse " id="navbarMenu">
+                <ul class="navbar-nav ms-auto d-flex justify-content-between align-items-center ">
+                    <li class="nav-item ">
+                        <a class="nav-link active" href="#">
+                            <button class="btn btn-icon" data-bs-toggle="offcanvas" data-bs-target="#authorOffcanvas" title="Profile" id="Profile">
+                                <i class="fa-solid fa-circle-user" style="font-size:25px" aria-hidden="true"></i>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">
+                            <span class="nav-username" id="nav-username">—</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- offcanvas for the author -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="authorOffcanvas" aria-labelledby="authorOffcanvasLabel">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title" id="authorOffcanvas">
+            <i class="ti ti-user me-2"></i>User Profile
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="avatar-row d-flex flex-column justify-content-center align-items-center">
+                <i class="fa-solid fa-circle-user" style="font-size:60px" aria-hidden="true"></i>
+                <div class="oc-name mt-4" id="oc-name">—</div>
+                <div class="oc-role" id="oc-dept">—</div>
+                <button class="btn btn-danger w-100" onclick="handleLogout()">Logout</button>
+            </div>
+
+            <div class="section-sep">Details</div>
+
+            <div class="field-group">
+                <label class="field-label">Email</label>
+                <input class="field-input" id="oc-email" readonly>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Employee ID</label>
+                <input class="field-input" id="oc-empid" readonly>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Designation</label>
+                <input class="field-input" id="oc-designation" readonly>
+            </div>
+            <div class="field-group">
+                <label class="field-label">Project ID</label>
+                <input class="field-input" id="oc-projectid" readonly>
+            </div>
+        
+            <div class="mt-4 d-flex justify-content-center align-items-center me-auto">
+                <button class="btn btn-primary" data-bs-dismiss="offcanvas">
+                    Close
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="top-row row">
+            <div class="col-6">
+                <h1 class="title mt-3"> Welcome to Author dashboard</h1>
+                <p class="sub" id="sub-title">Manage and track your articles</p>
+            </div>
+            <div class="top-actions col-6 d-flex justify-content-end align-items-center gap-3">
+                <button class="btn  btn-success" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <i class="ti ti-plus" style="font-size:14px;vertical-align:-2px" aria-hidden="true"></i> Add request
+                </button>
+                <button class="restore-btn btn btn-warning" onclick="restoreAll()">
+                    <i class="ti ti-arrow-back-up" style="font-size:14px" aria-hidden="true"></i> Restore
+                </button>
+                
+            </div>
+        </div>
+
+        <div class="metrics" id="metrics"></div>
+
+        <div class="search-bar d-flex justify-content-start align-items-center gap-3 ">
+            <!-- <i class="ti ti-search search-icon" aria-hidden="true"></i> -->
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input type="text" class="search-input w-75 rounded-pill" id="searchInput" placeholder="Search by destination , purpose ,status or mode...">
+        </div>
+        
+        <div class="filter-bar" id="filters"></div>
+            
+        <div id="cards-container"></div>
+    </div>
+
+
+
+
+
     
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- external script file -->
+    <script src="../scripts/authorDashboard.js"> </script>
+
 </body>
 </html>

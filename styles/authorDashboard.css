@@ -1,0 +1,25 @@
+#authorOffcanvas
+{
+    background: var(--background);
+    color: var(--white-text);
+}
+
+body{
+    background: var(--background);
+    color : var(--white-text)
+}
+
+h1 {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 3rem;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: -0.055em;
+    line-height: 71px;
+    color: var(--white-text);
+}
+
+#searchInput{
+    border: none;
+    height: 40px;
+}
