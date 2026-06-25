@@ -68,7 +68,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="signUpModal">Sign Up</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                 </div>
                 <div class="modal-body">
 
@@ -164,18 +164,31 @@
     </div>
 
     <!-- ─── Login Modal for reader,author and admin───────────────────────────────────────── -->
-
-
-
-
-
-
-
-
-
-
-
-
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="l-userId" placeholder="ABDE123">
+                        <label for="l-userId">User ID</label>
+                        <small class="text-danger" id="ld-userId"></small>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="l-password" placeholder="*********">
+                        <label for="l-password">Password</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" onclick="clearLoginForm()">Clear</button>
+                    <button class="btn btn-success" id="loginBtn">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="landing" id="landing">
         <div class="container">

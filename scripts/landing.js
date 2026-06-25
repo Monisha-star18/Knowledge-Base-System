@@ -14,6 +14,12 @@ function clearSignUpForm()
         .hide().text("");
 }
 
+function clearLoginForm()
+{
+    $("#l-userId,#l-password").val("").removeClass("is-valid is-invalid");
+    $("ld-userId").hide().text("");
+}
+
 let emailExists = false;
 let userIdExists = false;
 
@@ -301,10 +307,124 @@ $(document).ready(function()
             new bootstrap.Modal(document.getElementById("loginModal")).show();
 
         } catch (err) {
-            console.error("Sign-up error:", err);
+            // console.error("Sign-up error:", err);
             Swal.fire({ icon: "error", title: "Cannot connect to server", text: "Please try again later." });
         }
     });
+
+        //----------------login validation --------------------------
+
+        // $("#l-userId") .on('input',function(){validateInput("#l-userId","ld-userId",null,"User ID is required")}) 
+
+        // let userIdTimer;
+
+        // $("#l-userId").on("input", function ()
+        // {
+        //     const element = this;
+        //     const userId = $(this).val().trim();
+
+        //     if (!userId)
+        //     {
+        //         $(element).removeClass("is-valid").addClass("is-invalid");
+        //         $("#ld-userId").show().text("User ID is required");
+        //         return;
+        //     }
+
+        //     clearTimeout(userIdTimer);
+
+        //     userIdTimer = setTimeout(async function ()
+        //     {
+        //         const res = await fetch(`${API}/users?userId=${userId}`);
+        //         const data = await res.json();
+
+        //         if (data.length > 0)
+        //         {
+        //             // User exists -> Valid Login ID
+        //             $(element).removeClass("is-invalid").addClass("is-valid");
+        //             $("#ld-userId").hide().text("");
+        //         }
+        //         else
+        //         {
+        //             // User does not exist
+        //             $(element).removeClass("is-valid").addClass("is-invalid");
+        //             $("#ld-userId").show().text("User ID not found");
+        //         }
+        //     }, 500);
+        // });
+
+        $("#loginBtn").on("click", async function (e)
+        {
+            e.preventDefault();
+
+            const userId = $("#l-userId").val().trim();
+            const password = $("#l-password").val().trim();
+
+            if (!userId || !password)
+            {
+                Swal.fire({
+                    icon: "warning",
+                    title: "Please enter User ID and Password"
+                });
+                return;
+            }
+
+            try
+            {
+                const result = await fetch(`${API}/users?userId=${userId}`);
+                const users = await result.json();
+
+                if (users.length === 0)
+                {
+                    Swal.fire({icon: "error",title: "User ID Not Found"});
+                    return;
+                }
+
+                const user = users[0];
+
+                if (user.password !== password)
+                {
+                    Swal.fire({icon: "error",title: "Incorrect Password"});
+                    return;
+                }
+
+                // Store logged-in user (without password)
+                const { password: _pw, ...safeUser } = user;
+                localStorage.setItem("loggedUser", JSON.stringify(safeUser));
+
+                await Swal.fire({icon: "success",title: "Login Successful!",text: `Welcome, ${user.firstName}!`,timer: 1500,showConfirmButton: false})
+                .then(()=>
+                {
+                    // Redirect based on role
+                    if (user.role === "Reader")
+                    {
+                        window.location.href = "../pages/userDashboard.html";
+                    }
+                    else if (user.role === "Author")
+                    {
+                        window.location.href = "../pages/authorDashboard.html";
+                    }
+                    else if (user.role === "Admin")
+                    {
+                        window.location.href = "../pages/adminDashboard.html";
+                    }
+                    // else
+                    // {
+                    //     Swal.fire({icon: "error",title: "Invalid Role Assigned"});
+                    // }
+
+                })
+
+                
+            }
+            catch (err)
+            {
+                console.error("Login error:", err);
+
+                Swal.fire({icon: "error",title: "Cannot connect to server"
+                });
+            }
+        });
+
 
 
 

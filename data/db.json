@@ -9,6 +9,16 @@
       "role": "Reader"
     },
     {
+      "id": "2",
+      "firstName": "Monisha",
+      "lastName": "R",
+      "email": "monisha@gmail.com",
+      "userId": "MON1235",
+      "password": "Moni1805@",
+      "role": "Admin"
+      
+    },
+    {
       "firstName": "Moni",
       "lastName": "Ravi",
       "email": "monishar@gmail.com",
@@ -20,6 +30,45 @@
       "bio": "A passionate content creator who loves sharing knowledge about technology, programming, and modern web development. Committed to making complex topics simple and accessible for everyone.",
       "createdDate": "2026-06-25T05:02:28.011Z",
       "id": "1vEHgs8MIS4"
+    },
+    {
+      "firstName": "Sanjay",
+      "lastName": "Sam Mathew",
+      "email": "Sanjay@gmail.com",
+      "userId": "SANJAY123",
+      "password": "@Sanjay123",
+      "dateOfBirth": "2005-07-20",
+      "gender": "Male",
+      "role": "Reader",
+      "bio": "A curious reader who enjoys exploring articles on technology, lifestyle, education, and current trends. Always eager to learn something new and discover fresh perspectives.",
+      "createdDate": "2026-06-25T05:07:07.966Z",
+      "id": "epsVy9hH5yI"
+    },
+    {
+      "firstName": "Vishal",
+      "lastName": "Madhan",
+      "email": "vishal@gmail.com",
+      "userId": "123VIS",
+      "password": "$Vishal@123",
+      "dateOfBirth": "2005-09-20",
+      "gender": "Male",
+      "role": "Reader",
+      "bio": "An enthusiastic reader who enjoys discovering interesting stories, insightful articles, and practical tips across a variety of topics.",
+      "createdDate": "2026-06-25T05:09:44.777Z",
+      "id": "jCzGNERk8wA"
+    },
+    {
+      "firstName": "Ravi",
+      "lastName": "Kanthasamya",
+      "email": "ravi@gmail.com",
+      "userId": "Rav123",
+      "password": "Ravi@123",
+      "dateOfBirth": "1975-11-15",
+      "gender": "Male",
+      "role": "Reader",
+      "bio": "A curious reader who enjoys exploring articles on technology, lifestyle, education, and current trends. Always eager to learn something new and discover fresh perspectives.",
+      "createdDate": "2026-06-25T05:39:55.058Z",
+      "id": "nmiARs0MwZc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
