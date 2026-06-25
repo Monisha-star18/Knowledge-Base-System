@@ -11,19 +11,3 @@
   --white-text:#ffffff;
   --text-on-white:#E8440A;
 }
-
-/* navbar */
-/* ----------------------------------------------------------------- */
-.navbar{background-color: var(--nav-bg);border-bottom: 1px solid #f0ede8;}
-
-/* navbard*/
-.navbar-brand{color: #E8440A}
-
-/* nablink */
-.nav-link button:hover
-{
-    color: var(--color-primary-dark);
-    border: 1px solid var(--color-primary-dark) !important;
-    /* background-color: var(--grad-card-b) !important; */
-}
-/* ----------------------------------------------------------------- */

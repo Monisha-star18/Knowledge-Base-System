@@ -3,71 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome </title>
+    <title>Author Dashboard – InsightHub</title>
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-        
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-
-    <!-- external css file -->
-     <link href="../styles/theme.css" rel="stylesheet">
-     <link href="../styles/authorDashboard.css" rel="stylesheet"
+    <link href="../styles/theme.css" rel="stylesheet">
+    <link href="../styles/authorDashboard.css" rel="stylesheet">
 </head>
 <body>
 
-
-    <!-- navbar -->
-    <nav class="navbar navbar-expand-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
         <div class="container d-flex align-items-center">
-
-            <!-- navbar Logo/brand -->
             <a class="navbar-brand" href="#">
-                <i class="fa-brands fa-readme text-drak"></i>
-                InsightHub
+                <i class="fa-brands fa-readme"></i>InsightHub
             </a>
-
-            <!-- humburger button on collapse  -->
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
-                <i class="fas fa-bars"></i> 
+                <i class="fas fa-bars"></i>
             </button>
-
-            <!-- navbar links/menu -->
-            <div class="collapse navbar-collapse " id="navbarMenu">
-                <ul class="navbar-nav ms-auto d-flex justify-content-between align-items-center ">
-                    <li class="nav-item ">
-                        <a class="nav-link active" href="#">
-                            <button class="btn btn-icon" data-bs-toggle="offcanvas" data-bs-target="#authorOffcanvas" title="Profile" id="Profile">
-                                <i class="fa-solid fa-circle-user" style="font-size:25px" aria-hidden="true"></i>
-                            </button>
-                        </a>
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
+                    <li class="nav-item">
+                        <span class="nav-username" id="nav-username" style="color:#94A3B8; font-size:0.88rem;">—</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">
-                            <span class="nav-username" id="nav-username">—</span>
-                        </a>
+                        <button class="btn btn-icon" data-bs-toggle="offcanvas" data-bs-target="#authorOffcanvas" title="Profile" id="Profile" style="background:none;border:none;">
+                            <i class="fa-solid fa-circle-user" style="font-size:26px; color:#94A3B8;" aria-hidden="true"></i>
+                        </button>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- offcanvas for the author -->
+    <!-- Offcanvas – Author Profile -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="authorOffcanvas" aria-labelledby="authorOffcanvasLabel">
-        <div class="offcanvas-header border-bottom">
-            <h5 class="offcanvas-title" id="authorOffcanvas">
-            <i class="ti ti-user me-2"></i>User Profile
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="authorOffcanvasLabel">
+                <i class="fa-solid fa-circle-user me-2"></i>User Profile
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
             <div class="avatar-row d-flex flex-column justify-content-center align-items-center">
-                <i class="fa-solid fa-circle-user" style="font-size:60px" aria-hidden="true"></i>
-                <div class="oc-name mt-4" id="oc-name">—</div>
+                <i class="fa-solid fa-circle-user" style="font-size:62px;" aria-hidden="true"></i>
+                <div class="oc-name mt-3" id="oc-name">—</div>
                 <div class="oc-role" id="oc-dept">—</div>
-                <button class="btn btn-danger w-100" onclick="handleLogout()">Logout</button>
+                <button class="btn btn-danger w-100 mt-2" onclick="handleLogout()">
+                    <i class="fa-solid fa-right-from-bracket me-1"></i> Logout
+                </button>
             </div>
 
             <div class="section-sep">Details</div>
@@ -88,62 +72,190 @@
                 <label class="field-label">Project ID</label>
                 <input class="field-input" id="oc-projectid" readonly>
             </div>
-        
-            <div class="mt-4 d-flex justify-content-center align-items-center me-auto">
-                <button class="btn btn-primary" data-bs-dismiss="offcanvas">
-                    Close
-                </button>
+            <div class="mt-4 d-flex justify-content-center">
+                <button class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Close</button>
             </div>
-            
         </div>
     </div>
 
+    <!-- Main Content -->
     <div class="container">
-        <div class="top-row row">
+
+        <!-- Header row -->
+        <div class="row top-row">
             <div class="col-6">
-                <h1 class="title mt-3"> Welcome to Author dashboard</h1>
+                <h1 class="title mt-4">Author Dashboard</h1>
                 <p class="sub" id="sub-title">Manage and track your articles</p>
             </div>
-            <div class="top-actions col-6 d-flex justify-content-end align-items-center gap-3">
-                <button class="btn  btn-success" data-bs-toggle="modal" data-bs-target="#addModal">
-                    <i class="ti ti-plus" style="font-size:14px;vertical-align:-2px" aria-hidden="true"></i> Add request
+            <div class="col-6 d-flex justify-content-end align-items-center gap-3 mt-4">
+                <button class="btn btn-add-request" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <i class="fa-solid fa-plus me-1"></i> Add request
                 </button>
-                <button class="restore-btn btn btn-warning" onclick="restoreAll()">
-                    <i class="ti ti-arrow-back-up" style="font-size:14px" aria-hidden="true"></i> Restore
+                <button class="btn-restore btn" onclick="restoreAll()">
+                    <i class="fa-solid fa-rotate-left me-1"></i> Restore
                 </button>
-                
             </div>
         </div>
 
-        <div class="metrics" id="metrics"></div>
+        <!-- Metrics -->
+        <!-- <div class="metrics" id="metrics">
+            <div class="metric-card">
+                <div class="metric-label">Total</div>
+                <div class="metric-value">12</div>
+            </div>
+            <div class="metric-card accent">
+                <div class="metric-label">Approved</div>
+                <div class="metric-value">5</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Pending</div>
+                <div class="metric-value">4</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Rejected</div>
+                <div class="metric-value">3</div>
+            </div>
+        </div> -->
 
-        <div class="search-bar d-flex justify-content-start align-items-center gap-3 ">
-            <!-- <i class="ti ti-search search-icon" aria-hidden="true"></i> -->
-            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-            <input type="text" class="search-input w-75 rounded-pill" id="searchInput" placeholder="Search by destination , purpose ,status or mode...">
+        <!-- Filter Bar -->
+        <div class="filter-bar d-flex gap-2 mt-3" id="filters">
+            <button class="btn active" id="all-btn">All</button>
+            <button class="btn" id="approved-btn">Approved</button>
+            <button class="btn" id="pending-btn">Pending</button>
+            <button class="btn" id="rejected-btn">Rejected</button>
         </div>
-        
-        <div class="filter-bar" id="filters"></div>
-            
-        <div id="cards-container"></div>
+
+        <div class="divider"></div>
+
+        <!-- Search -->
+        <div class="search-row d-flex gap-2 justify-content-start align-items-center">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <div class="search-box p-2 w-75 rounded-pill">
+                <input type="text" id="searchInput" placeholder="Search articles…" class="p-2">
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div id="cards-container">
+
+            <!-- APPROVED card -->
+            <div class="article-card">
+                <div class="card-img-wrap">
+                    <img src="https://picsum.photos/seed/article1/800/300" alt="Article cover" class="card-img">
+                    <div class="card-status-pill">
+                        <span class="badge-approved">✓ Approved</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">How AI is Reshaping Modern Workplaces</div>
+                    <div class="card-sub">Exploring how artificial intelligence is transforming daily workflows, team collaboration, and decision-making across industries.</div>
+                    <div class="divider"></div>
+                    <div class="card-meta-row d-flex flex-column">
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-calendar-days"></i> Submitted: 20 Jun 2025
+                        </span>
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-tag"></i> Technology
+                        </span>
+                    </div>
+                    <div class="card-date-row approved">
+                        <i class="fa-solid fa-circle-check"></i> Approved on: 23 Jun 2025
+                    </div>
+                </div>
+            </div>
+
+            <!-- PENDING card (edit + delete buttons) -->
+            <div class="article-card">
+                <div class="card-img-wrap">
+                    <img src="https://picsum.photos/seed/article2/800/300" alt="Article cover" class="card-img">
+                    <div class="card-status-pill">
+                        <span class="badge-pending">⏳ Pending</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Top 10 Productivity Tools for Remote Teams</div>
+                    <div class="card-sub">A curated breakdown of the best tools helping distributed teams stay focused, aligned, and efficient in 2025.</div>
+                    <div class="divider"></div>
+                    <div class="card-meta-row d-flex flex-column">
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-calendar-days"></i> Submitted: 22 Jun 2025
+                        </span>
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-tag"></i> Productivity
+                        </span>
+                    </div>
+                    <div class="card-date-row">
+                        <i class="fa-regular fa-clock"></i> Awaiting review
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-card-edit" onclick="editArticle(this)">
+                            <i class="fa-solid fa-pen"></i> Edit
+                        </button>
+                        <button class="btn-card-delete" onclick="deleteArticle(this)">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REJECTED card -->
+            <div class="article-card">
+                <div class="card-img-wrap">
+                    <img src="https://picsum.photos/seed/article3/800/300" alt="Article cover" class="card-img">
+                    <div class="card-status-pill">
+                        <span class="badge-rejected">✕ Rejected</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">Understanding Cloud Security Best Practices</div>
+                    <div class="card-sub">A deep dive into modern cloud security frameworks, common vulnerabilities, and how organizations can build a resilient infrastructure.</div>
+                    <div class="divider"></div>
+                    <div class="card-meta-row d-flex flex-column">
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-calendar-days"></i> Submitted: 18 Jun 2025
+                        </span>
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-tag"></i> Security
+                        </span>
+                    </div>
+                    <div class="card-date-row rejected">
+                        <i class="fa-solid fa-circle-xmark"></i> Rejected on: 21 Jun 2025
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="card-img-wrap">
+                    <img src="https://picsum.photos/seed/article4/800/300" alt="Article cover" class="card-img">
+                    <div class="card-status-pill">
+                        <span class="badge-approved">✓ Approved</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">How AI is Reshaping Modern Workplaces</div>
+                    <div class="card-sub">Exploring how artificial intelligence is transforming daily workflows, team collaboration, and decision-making across industries.</div>
+                    <div class="divider"></div>
+                    <div class="card-meta-row d-flex flex-column">
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-calendar-days"></i> Submitted: 20 Jun 2025
+                        </span>
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-tag"></i> Technology
+                        </span>
+                    </div>
+                    <div class="card-date-row approved">
+                        <i class="fa-solid fa-circle-check"></i> Approved on: 23 Jun 2025
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-
-
-
-
-    
-    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-    <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- external script file -->
-    <script src="../scripts/authorDashboard.js"> </script>
+    <script src="../scripts/authorDashboard.js"></script>
 
 </body>
 </html>
