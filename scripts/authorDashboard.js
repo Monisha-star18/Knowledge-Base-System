@@ -64,7 +64,7 @@ $(document).ready(async function () {
 // Fetch articles written by this specific author
 async function fetchAndRenderArticles() {
     try {
-        const res = await fetch(`${API}/articles?authorId=${loggedUser.id}`);
+        const res = await fetch(`${API}/articles?authorId=${loggedUser.id}&isDeleted=false`);
         if (!res.ok) throw new Error("Failed to load articles");
         localArticles = await res.json();
         renderCards();
@@ -83,11 +83,12 @@ function renderCards() {
 
     // Filter array
     let filtered = localArticles.filter(art => {
+        const notDeleted  = !art.isDeleted
         const matchesFilter = (currentFilter === "all" || art.status === currentFilter);
         const matchesSearch = art.title.toLowerCase().includes(searchVal) || 
                               art.subtitle.toLowerCase().includes(searchVal) || 
                               art.category.toLowerCase().includes(searchVal);
-        return matchesFilter && matchesSearch;
+        return notDeleted && matchesFilter && matchesSearch;
     });
 
     if (filtered.length === 0) {
@@ -154,6 +155,60 @@ function renderCards() {
     });
 }
 
+//delect 
+async function deleteArticle(id) 
+{
+    Swal.fire({ title: 'Delete Article?', text: 'This article will be removed from your dashboard.', icon: 'warning', showCancelButton: true })
+        .then(async result => {
+            if (result.isConfirmed) {
+                await fetch(`${API}/articles/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ isDeleted: true })
+                });
+                await fetchAndRenderArticles();
+            }
+        });
+}
+
+//restore 
+async function restoreArticle() {
+
+    const restoreContainer = $("#restoreModal-content");
+    restoreContainer.empty();
+
+    const restore = await fetch(`${API}/articles?authorId=${loggedUser.id}&isDeleted=true`);
+    if (!restore.ok) throw new Error("Failed to load articles");
+    localRestoreArticles = await restore.json();
+
+    console.log(localRestoreArticles);
+    localRestoreArticles.forEach(restoreArt => {
+
+        const restoreCard = `
+            <div class="container restoreSection">
+                <div class="card p-3 mb-3">          
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <p class="mb-1 fw-semibold">Title : ${restoreArt.title}</p>
+                            <small class="text-muted">Created date : ${restoreArt.createdAt}</small>
+                        </div>                          
+                        <div>
+                            <button class="btn btn-danger rounded-pill restorSpecificArticle" data-id="${restoreArt.id}">Restore</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        restoreContainer.append(restoreCard);
+    });
+}
+
+$(document).on("click", ".restorSpecificArticle", async function() {
+    editId = $(this).data("id");
+    console.log(editId);
+});
+
 
 // Logout execution 
 function handleLogout()
@@ -167,3 +222,4 @@ function handleLogout()
             }
         });
 }
+

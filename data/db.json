@@ -74,7 +74,7 @@
     {
       "authorId": "1vEHgs8MIS4",
       "title": "Understanding Cloud Security Best Practices ssssssssssss",
-      "category": "security",
+      "category": "design",
       "subtitle": "Cloud Security",
       "intro": "A deep dive into modern cloud security frameworks, common vulnerabilities, and how organizations can build a resilient infrastructure.",
       "content": "Cloud computing has transformed the way organizations develop, deploy, and manage applications. From startups to global enterprises, businesses rely on cloud platforms to achieve scalability, flexibility, and cost efficiency. However, as cloud adoption increases, so do security challenges. Cybercriminals continuously target cloud environments, exploiting vulnerabilities that can lead to data breaches, service disruptions, and financial losses.\n\nTo address these risks, organizations must adopt modern cloud security frameworks and implement robust security practices. This article explores leading cloud security frameworks, common vulnerabilities, and strategies for building a resilient cloud infrastructure.\n\nCloud security refers to the collection of technologies, policies, controls, and procedures designed to protect cloud-based systems, data, and applications. Unlike traditional on-premises environments, cloud security operates under a shared responsibility model, where both the cloud provider and the customer share security responsibilities.",
@@ -82,7 +82,9 @@
       "createdAt": "25 Jun 2026",
       "status": "pending",
       "id": "64umKPdognU",
-      "reviewDate": null
+      "reviewDate": null,
+      "updatedAt": "Fri Jun 26 2026",
+      "isDeleted": true
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -95,6 +97,7 @@
       "createdAt": "25 Jun 2026",
       "status": "pending",
       "id": "KKzaQkieLeU",
+      "isDeleted": false,
       "reviewDate": null
     },
     {
@@ -108,6 +111,7 @@
       "createdAt": "25 Jun 2026",
       "status": "pending",
       "id": "lzvklo9R_qU",
+      "isDeleted": false,
       "reviewDate": null
     },
     {
@@ -122,6 +126,7 @@
       "status": "pending",
       "id": "__i9M2MkRr8",
       "reviewDate": null,
+      "isDeleted": true,
       "updatedAt": "Fri Jun 26 2026"
     },
     {
@@ -135,6 +140,7 @@
       "createdAt": "25 Jun 2026",
       "status": "rejected",
       "id": "FjA2LUzzgDs",
+      "isDeleted": false,
       "reviewDate": "26 Jun 2026"
     },
     {
@@ -148,6 +154,7 @@
       "createdAt": "25 Jun 2026",
       "status": "approved",
       "id": "beEvb5JEHqg",
+      "isDeleted": false,
       "reviewDate": "26 Jun 2026"
     },
     {
@@ -162,6 +169,7 @@
       "status": "pending",
       "id": "H555FpJipTg",
       "reviewDate": null,
+      "isDeleted": false,
       "updatedAt": "Fri Jun 26 2026"
     }
   ],

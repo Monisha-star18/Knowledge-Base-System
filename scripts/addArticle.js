@@ -159,7 +159,8 @@ document.getElementById('articleForm').addEventListener('submit', async function
                 image:      `https://picsum.photos/seed/article${nextIndex}/800/300`,
                 createdAt:  displayDate,
                 status:     'pending',
-                reviewDate: null
+                reviewDate: null,
+                isDeleted: null
             };
 
             const saveRes = await fetch(`${API}/articles`, {
