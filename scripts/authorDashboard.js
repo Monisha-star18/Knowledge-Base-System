@@ -200,13 +200,26 @@ async function restoreArticle() {
             </div>
         `;
 
-        restoreContainer.append(restoreCard);
+        restoreContainer.prepend(restoreCard);
     });
 }
 
-$(document).on("click", ".restorSpecificArticle", async function() {
-    editId = $(this).data("id");
-    console.log(editId);
+
+$(document).on("click", ".restorSpecificArticle",  function() {
+    const restoreId = $(this).data("id");
+    Swal.fire({ title: 'Restore Article?', text: 'This article will be restored.', showCancelButton: true })
+        .then(async result => {
+            if (result.isConfirmed) {
+                await fetch(`${API}/articles/${restoreId}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ isDeleted: false })
+                });
+                await restoreArticle()
+                await fetchAndRenderArticles();
+            }
+        });
+    
 });
 
 
