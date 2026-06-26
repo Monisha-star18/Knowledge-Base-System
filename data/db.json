@@ -128,7 +128,7 @@
       "content": "With increasing internet usage, cyber threats have become more common. Hackers often target users through phishing emails, weak passwords, and malicious websites.\n\nOne of the most important security practices is creating strong passwords. Passwords should be unique, difficult to guess, and updated regularly. Using a password manager can help keep accounts secure.\n\nEnabling two-factor authentication adds an extra layer of protection. Even if a password is compromised, unauthorized users cannot easily access the account.\n\nUsers should also avoid clicking suspicious links or downloading files from unknown sources. Keeping software and devices updated helps protect against newly discovered vulnerabilities.\n\nBy following these simple cybersecurity measures, individuals can improve their online safety and protect their valuable information.",
       "image": "https://picsum.photos/seed/article5/800/300",
       "createdAt": "25 Jun 2026",
-      "status": "pending",
+      "status": "rejected",
       "id": "FjA2LUzzgDs"
     },
     {
@@ -140,7 +140,7 @@
       "content": "In essence, a design system is a set of patterns and practices that help teams across an organization—from designers to developers—create consistent, accessible digital products. There are different models, but most consist of a pattern library, design tokens, brand and style guidelines, and documentation on how to use the system.\n\nThe benefits of design systems are twofold. First, they speed up every stage of product development, from concept and design to production and testing. Figma has found that designers working with a system complete their tasks 34% faster than those without one. Second, design systems improve the customer experience by ensuring consistency, familiarity, and accessibility at every touchpoint.\n\nRecently another UI designer and I took a month to build a design system for a leading e-commerce site that provides baby products to mothers across the Middle East. Using insights from the experience of building a design system for this website and app–which I’ll refer to as “the baby product site” or “the baby product app”—I’ll lay out how design systems enable teams to improve products and increase efficiency.\n\nDesign Systems Speed Up Design and Development Cycles\nDesign systems save organizations time and money by codifying design decisions that can be replicated at scale. Let’s break down specifically how these systems support faster design and development cycles, and how to get the most of out of your design system.\n\nA Streamlined Design-to-production Workflow\nOn the baby product site, before we implement a new design it goes through a series of stages. First, designers prototype and hand over a design to a UX researcher for validation, or alpha testing. Next, we share the prototype with stakeholders. Then we push the update to a small audience and track the results of the change with A/B testing. This learning cycle, also known as beta testing, repeats until we get a sufficiently high success metric. We may work on more than five variations of a design, discarding many of them throughout these stages to expedite finding the best solution.",
       "image": "https://picsum.photos/seed/article6/800/300",
       "createdAt": "25 Jun 2026",
-      "status": "pending",
+      "status": "approved",
       "id": "beEvb5JEHqg"
     }
   ],
