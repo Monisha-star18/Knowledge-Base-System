@@ -109,12 +109,11 @@
       "status": "pending",
       "id": "lzvklo9R_qU",
       "reviewDate": null
-
     },
     {
       "authorId": "1vEHgs8MIS4",
       "title": "Importance of a Digital Presence for Small Businesses",
-      "category": "business",
+      "category": "design",
       "subtitle": "Reaching more customers through online platforms.",
       "intro": "A strong online presence helps businesses connect with customers and grow their brand. Digital platforms have become essential tools for modern businesses.",
       "content": "Today, most customers search online before purchasing products or services. Businesses without a website or social media presence may miss valuable opportunities.\n\nA professional website allows customers to learn about products, services, and contact information at any time. It also helps build trust and credibility.\n\nSocial media platforms provide businesses with a cost-effective way to engage with customers and promote their offerings. Regular updates and customer interaction can strengthen relationships and increase brand awareness.\n\nDigital marketing techniques such as search engine optimization and email marketing can further expand reach and attract new customers.\n\nIn a competitive market, maintaining a strong digital presence is essential for business growth and long-term success.",
@@ -122,7 +121,8 @@
       "createdAt": "25 Jun 2026",
       "status": "pending",
       "id": "__i9M2MkRr8",
-      "reviewDate": null
+      "reviewDate": null,
+      "updatedAt": "Fri Jun 26 2026"
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -153,7 +153,7 @@
     {
       "authorId": "1vEHgs8MIS4",
       "title": "5 Easy Ways to Increase Productivity in Your Daily",
-      "category": "productivity",
+      "category": "security",
       "subtitle": "Is something keeping you from being your very best? Do you feel like you’re losing time in your day?",
       "intro": "Do you feel like you could be a little more efficient at reaching your goals – whether for work or your dreams? You’re in the right place, and you’re about to get a lot more done.  It’s time to master productivity and conquer your workday!",
       "content": "Here are five life hacks to increase your productivity:\n      1. Don’t Multitask\nYou’re trying to save time and get more done – doesn’t doing a few things at once sound like the most efficient way to squeeze a little more productivity out of your day? Counterintuitive as it may seem, you’re actually making yourself less efficient by multitasking. Neuroscientists have made their stance clear: multitasking simply doesn’t work. \n 2. Take Breaks\nJust as we delude ourselves into thinking that multitasking will make us more efficient, we also trick ourselves into thinking that working longer hours without breaks will help us get more accomplished. \n3. Keep a Clean Space\nA mind cluttered with random thoughts is obviously going to have a hard time focusing and getting work done. We work to clear these distractions from our brain… but what about our physical workspaces? Clutter on our desks or in our offices can have a big impact on our productivity and mental states.",
@@ -161,7 +161,8 @@
       "createdAt": "Fri Jun 26 2026",
       "status": "pending",
       "id": "H555FpJipTg",
-      "reviewDate": null
+      "reviewDate": null,
+      "updatedAt": "Fri Jun 26 2026"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

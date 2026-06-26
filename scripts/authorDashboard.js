@@ -112,8 +112,12 @@ function renderCards() {
             footerRow = `<div class="card-date-row"><i class="fa-regular fa-clock"></i> Awaiting review</div>`;
             actionButtons = `
                 <div class="card-actions">
-                    <button class="btn-card-edit"  ><i class="fa-solid fa-pen"></i> Edit</button>
-                    <button class="btn-card-delete"  ><i class="fa-solid fa-trash"></i> Delete</button>
+                    <button class="btn-card-edit" onclick="window.location.href='../pages/addArticle.html?id=${art.id}'">
+                        <i class="fa-solid fa-pen"></i> Edit
+                    </button>
+                    <button class="btn-card-delete" onclick="deleteArticle('${art.id}')">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
                 </div>`;
         }
 
@@ -133,6 +137,11 @@ function renderCards() {
                         <span class="card-meta-item">
                             <i class="fa-solid fa-calendar-days"></i> Submitted: ${art.createdAt}
                         </span>
+                        <!-- ternarany operator used to check if  updatedAt these else dont display -->
+                        ${art.updatedAt ? `
+                        <span class="card-meta-item">
+                            <i class="fa-solid fa-calendar-days"></i> Updated: ${art.updatedAt}
+                        </span>` : ''}
                         <span class="card-meta-item">
                             <i class="fa-solid fa-tag"></i> ${art.category.charAt(0).toUpperCase() + art.category.slice(1)}
                         </span>

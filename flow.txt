@@ -43,7 +43,7 @@ edit article -> move to new page
 			   subtitle 
 			   basic intro
 			   full content
-			   take updated date by yourself , if multiple times updated show the last updated date 
+			   	 , if multiple times updated show the last updated date 
 
 for admin :
 not need to create , alredy hard code the value 
