@@ -126,7 +126,7 @@
       "status": "pending",
       "id": "__i9M2MkRr8",
       "reviewDate": null,
-      "isDeleted": false,
+      "isDeleted": true,
       "updatedAt": "Fri Jun 26 2026"
     },
     {
@@ -169,7 +169,7 @@
       "status": "pending",
       "id": "H555FpJipTg",
       "reviewDate": null,
-      "isDeleted": true,
+      "isDeleted": false,
       "updatedAt": "Fri Jun 26 2026"
     }
   ],
