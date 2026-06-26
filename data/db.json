@@ -81,7 +81,8 @@
       "image": "https://picsum.photos/seed/article1/800/300",
       "createdAt": "25 Jun 2026",
       "status": "pending",
-      "id": "64umKPdognU"
+      "id": "64umKPdognU",
+      "reviewDate": null
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -93,7 +94,8 @@
       "image": "https://picsum.photos/seed/article2/800/300",
       "createdAt": "25 Jun 2026",
       "status": "pending",
-      "id": "KKzaQkieLeU"
+      "id": "KKzaQkieLeU",
+      "reviewDate": null
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -105,7 +107,9 @@
       "image": "https://picsum.photos/seed/article3/800/300",
       "createdAt": "25 Jun 2026",
       "status": "pending",
-      "id": "lzvklo9R_qU"
+      "id": "lzvklo9R_qU",
+      "reviewDate": null
+
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -117,7 +121,8 @@
       "image": "https://picsum.photos/seed/article4/800/300",
       "createdAt": "25 Jun 2026",
       "status": "pending",
-      "id": "__i9M2MkRr8"
+      "id": "__i9M2MkRr8",
+      "reviewDate": null
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -129,7 +134,8 @@
       "image": "https://picsum.photos/seed/article5/800/300",
       "createdAt": "25 Jun 2026",
       "status": "rejected",
-      "id": "FjA2LUzzgDs"
+      "id": "FjA2LUzzgDs",
+      "reviewDate": "26 Jun 2026"
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -141,7 +147,21 @@
       "image": "https://picsum.photos/seed/article6/800/300",
       "createdAt": "25 Jun 2026",
       "status": "approved",
-      "id": "beEvb5JEHqg"
+      "id": "beEvb5JEHqg",
+      "reviewDate": "26 Jun 2026"
+    },
+    {
+      "authorId": "1vEHgs8MIS4",
+      "title": "5 Easy Ways to Increase Productivity in Your Daily",
+      "category": "productivity",
+      "subtitle": "Is something keeping you from being your very best? Do you feel like you’re losing time in your day?",
+      "intro": "Do you feel like you could be a little more efficient at reaching your goals – whether for work or your dreams? You’re in the right place, and you’re about to get a lot more done.  It’s time to master productivity and conquer your workday!",
+      "content": "Here are five life hacks to increase your productivity:\n      1. Don’t Multitask\nYou’re trying to save time and get more done – doesn’t doing a few things at once sound like the most efficient way to squeeze a little more productivity out of your day? Counterintuitive as it may seem, you’re actually making yourself less efficient by multitasking. Neuroscientists have made their stance clear: multitasking simply doesn’t work. \n 2. Take Breaks\nJust as we delude ourselves into thinking that multitasking will make us more efficient, we also trick ourselves into thinking that working longer hours without breaks will help us get more accomplished. \n3. Keep a Clean Space\nA mind cluttered with random thoughts is obviously going to have a hard time focusing and getting work done. We work to clear these distractions from our brain… but what about our physical workspaces? Clutter on our desks or in our offices can have a big impact on our productivity and mental states.",
+      "image": "https://picsum.photos/seed/article7/800/300",
+      "createdAt": "Fri Jun 26 2026",
+      "status": "pending",
+      "id": "H555FpJipTg",
+      "reviewDate": null
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

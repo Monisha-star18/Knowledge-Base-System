@@ -1,31 +1,40 @@
-// document.querySelectorAll('#filters .btn').forEach(btn => {
-//     btn.addEventListener('click', function () {
-//         document.querySelectorAll('#filters .btn').forEach(b => b.classList.remove('active'));
-//         this.classList.add('active');
-//     });
-// });
 
 const API = "http://localhost:3000";
 let loggedUser = null;
-let localArticles = []; // Stores current active articles fetched from db
+let localArticles = []; 
 let currentFilter = "all";
 
 $(document).ready(async function () {
-    // 1. Guard check: Ensure user is logged in and is an Author
+
+    // take the login user data 
     const userData = localStorage.getItem("loggedUser");
-    if (!userData) {
-        window.location.href = "landing.html"; // Adjust to your landing page path
-        return;
-    }
     loggedUser = JSON.parse(userData);
 
-    if (loggedUser.role !== "Author") {
-        window.location.href = "landing.html";
-        return;
-    }
 
-    // 2. Populate Navbar & Profile Sidebar
+    // 2. fill Navbar & Profile Sidebar
     setupProfile();
+
+    // fill Profile Sidebar Fields using the login deatils 
+    function setupProfile() 
+    {
+
+        const fullName = `${loggedUser.firstName} ${loggedUser.lastName}`;
+        $("#nav-username").text(fullName);
+
+        $("#Name").text(fullName);
+        $("#Role").text(loggedUser.role);
+        $("#UserId").text(loggedUser.userId);
+        $("#Bio").text(loggedUser.bio || "No bio available.");
+        $("#Email").text(loggedUser.email);
+        
+        const dob = new Date(loggedUser.dateOfBirth).toLocaleDateString();
+        $("#Dob").text(dob);
+
+        $("#Gender").text(loggedUser.gender);
+
+        const joined = new Date(loggedUser.createdDate).toLocaleDateString();
+        $("#Joined").text(joined);
+    }
 
     // 3. Initial fetch and render
     await fetchAndRenderArticles();
@@ -50,16 +59,7 @@ $(document).ready(async function () {
     });
 });
 
-// Populate Profile Sidebar Fields
-function setupProfile() {
-    $("#nav-username").text(`${loggedUser.firstName} ${loggedUser.lastName}`);
-    $("#oc-name").text(`${loggedUser.firstName} ${loggedUser.lastName}`);
-    $("#oc-dept").text(loggedUser.role);
-    $("#oc-email").val(loggedUser.email);
-    $("#oc-empid").val(loggedUser.userId || "—");
-    $("#oc-designation").val("Content Creator");
-    $("#oc-projectid").val(loggedUser.id || "—");
-}
+
 
 // Fetch articles written by this specific author
 async function fetchAndRenderArticles() {
@@ -103,17 +103,17 @@ function renderCards() {
 
         if (art.status === "approved") {
             statusBadge = `<span class="badge-approved">✓ Approved</span>`;
-            footerRow = `<div class="card-date-row approved"><i class="fa-solid fa-circle-check"></i> Approved on: ${art.createdAt}</div>`;
+            footerRow = `<div class="card-date-row approved"><i class="fa-solid fa-circle-check"></i> Approved on: ${art.reviewDate}</div>`;
         } else if (art.status === "rejected") {
             statusBadge = `<span class="badge-rejected">✕ Rejected</span>`;
-            footerRow = `<div class="card-date-row rejected"><i class="fa-solid fa-circle-xmark"></i> Rejected on: ${art.createdAt}</div>`;
+            footerRow = `<div class="card-date-row rejected"><i class="fa-solid fa-circle-xmark"></i> Rejected on: ${art.reviewDate}</div>`;
         } else {
             statusBadge = `<span class="badge-pending">⏳ Pending</span>`;
             footerRow = `<div class="card-date-row"><i class="fa-regular fa-clock"></i> Awaiting review</div>`;
             actionButtons = `
                 <div class="card-actions">
-                    <button class="btn-card-edit" style="opacity:0.6; cursor:not-allowed;" disabled><i class="fa-solid fa-pen"></i> Edit</button>
-                    <button class="btn-card-delete" style="opacity:0.6; cursor:not-allowed;" disabled><i class="fa-solid fa-trash"></i> Delete</button>
+                    <button class="btn-card-edit"  ><i class="fa-solid fa-pen"></i> Edit</button>
+                    <button class="btn-card-delete"  ><i class="fa-solid fa-trash"></i> Delete</button>
                 </div>`;
         }
 
@@ -141,17 +141,20 @@ function renderCards() {
                     ${actionButtons}
                 </div>
             </div>`;
-        container.append(cardHtml);
+        container.prepend(cardHtml);
     });
 }
 
-// Restore Simulation Function
-function restoreAll() {
-    fetchAndRenderArticles();
-}
 
 // Logout execution 
-function handleLogout() {
-    localStorage.removeItem("loggedUser");
-    window.location.href = "landing.html";
+function handleLogout()
+{
+    Swal.fire({title: 'LogOut',text:'Do you want to Log out',icon: 'warning',showCancelButton: true})
+        .then(result => 
+        {
+            if (result.isConfirmed) {
+                localStorage.removeItem("loggedUser");
+                window.location.href = "../pages/index.html";
+            }
+        });
 }

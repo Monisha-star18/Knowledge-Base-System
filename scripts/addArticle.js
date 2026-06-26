@@ -63,7 +63,8 @@ document.getElementById('articleForm').addEventListener('submit', async function
             content: document.getElementById('articleContent').value.trim(),
             image: `https://picsum.photos/seed/article${nextIndex}/800/300`,
             createdAt: displayDate,
-            status: 'pending'
+            status: 'pending',
+            reviewDate: null
         };
 
         // Send articel to db
