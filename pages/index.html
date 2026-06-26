@@ -19,7 +19,7 @@
 <body>
 
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container d-flex align-items-center">
 
             <!-- navbar Logo/brand -->
@@ -198,8 +198,8 @@
                     <h1 class="mt-4 mb-3">Create<br> and <br> Share <br> Human Stories.</h1>
                     <h3 class=" my-5">A place to read, write, and deepen your understanding</h3>
                     <div class="d-flex gap-2">
-                        <button class="btn btn-outline-light">Get started</button>
-                        <button class="btn btn-outline-light">View articles</button>
+                        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#signUpModal">Get started</button>
+                        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">View articles</button>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 p-5 d-flex flex-column justify-content-center " >
@@ -212,62 +212,41 @@
     
 
     <section class="About" id="about"> 
-        <div class="container" >
-            <div class="row">
-                <div class="container">
-                    <p class="d-flex flex-column justify-content-center align-items-center p-4 fw-5 tag-line">Your Gateway to Meaningful Content.</p>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 p-5 d-flex flex-column justify-content-center  landing-content " >
-                    
-                </div>
+        <div class="container my-5">
+            
+            <p class="aboutTop-sub my-2 fw-5">Featured articles</p>
+            <h2 class="about-heading mb-3">Stories worth<br>your time</h2>
+            <p class="about-sub mb-3 text-secondary">Handpicked reads from our editors  covering ideas, culture, science, and <br>the forces shaping our world ! </p>
 
-                <div class="col-sm-12 col-md-12 col-lg-6 p-5 d-flex flex-column justify-content-center  landing-content " >
-                   <p class=" text-center about-para">
-                        InsightHub is a modern content-sharing platform dedicated to bringing readers and authors together. 
-                        We provide a space where insightful articles, diverse perspectives, and valuable knowledge can be 
-                        shared with a global audience. Our goal is to inspire learning, encourage creativity, and foster a 
-                        community driven by curiosity and meaningful content.
-                    </p>
-                </div>
 
+            <div class=" my-5 d-flex gap-4 justify-content-center ">
+                    <!-- card 1  -->
+                    <div class="card col-3" style="background: linear-gradient(135deg,#fde8d6,#f5c3a0);">
+                        <div class="card-header">
+                            📝
+                        </div>
+                    </div>
+                    <!-- card 2  -->
+                    <div class="card col-3" style="background: linear-gradient(135deg,#fde8d6,#f5c3a0);">
+                        <div class="card-header">
+                            📝
+                        </div>
+                    </div>
+                    <!-- card 3  -->
+                    <div class="card col-3" style="background: linear-gradient(135deg,#fde8d6,#f5c3a0);">
+                        <div class="card-header">
+                            📝
+                        </div>
+                    </div>
             </div>
+            
+
         </div>
     </section>
 
 
     <section class="Features"> 
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-sm-12 col-md-4 col-lg-4 my-5">
-                    <div class="card" id="about-card">
-                        <img src="../asserts/images/image1.png"class="card-img-top card-image" alt="image">
-                        <div class="card-body">
-                            <h5 class="card-title">Reader Analytics</h5>
-                            <p class="card-text">Understand your audience like never before. Track real-time engagement, monitor reading times, and dive into deep insights to continuously refine your content strategy.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 my-5">
-                    <div class="card" id="about-card">
-                        <img src="../asserts/images/image2.png"class="card-img-top card-image" alt="image">
-                        <div class="card-body">
-                            <h5 class="card-title">Creative Writing</h5>
-                            <p class="card-text">Turn raw ideas into compelling narratives. Our platform empowers writers with distraction-free tools to craft deeply engaging articles, blogs, and stories that resonate with readers.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4 my-5" >
-                    <div class="card" id="about-card">
-                        <img src="../asserts/images/image3.png"class="card-img-top card-image" alt="image">
-                        <div class="card-body">
-                            <h5 class="card-title">Reader Analytics</h5>
-                            <p class="card-text">Understand your audience like never before. Track real-time engagement, monitor reading times, and dive into deep insights to continuously refine your content strategy.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        
     </section>
 
     <footer class="container-fluid d-flex mt-4">

@@ -59,3 +59,22 @@ h3{    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 html {
     scroll-behavior: smooth;
 }
+
+/* about */
+.aboutTop-sub, .about-sub{font-family: 'Segoe UI', system-ui, sans-serif;}
+
+.aboutTop-sub
+{
+    font-size: 0.72rem;letter-spacing: 0.2em;color: #b05a2f;
+    text-transform: uppercase;font-weight: 700;
+}
+
+ .about-heading 
+ {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 2.6rem;font-weight: 700;
+    line-height: 1.1;
+  }
+
+.about-sub {font-size: 0.97rem;line-height: 1.7;}
+
