@@ -1,21 +1,18 @@
 {
   "users": [
     {
-      "id": "1",
-      "firstName": "Monisha",
-      "lastName": "R",
-      "email": "monisha@gmail.com",
-      "userId": "MON123",
-      "role": "Reader"
-    },
-    {
       "id": "2",
       "firstName": "Monisha",
       "lastName": "R",
       "email": "monisha@gmail.com",
       "userId": "MON1235",
       "password": "Moni1805@",
-      "role": "Admin"
+      "category": "security",
+      "dateOfBirth": "2005-05-18",
+      "createdDate": "2026-06-25T05:02:28.011Z",
+      "gender": "Female",
+      "role": "Admin",
+      "bio": "A passionate content creator who loves sharing knowledge about technology, programming, and modern web development. Committed to making complex topics simple and accessible for everyone."
     },
     {
       "firstName": "Moni",
@@ -68,6 +65,19 @@
       "bio": "A curious reader who enjoys exploring articles on technology, lifestyle, education, and current trends. Always eager to learn something new and discover fresh perspectives.",
       "createdDate": "2026-06-25T05:39:55.058Z",
       "id": "nmiARs0MwZc"
+    },
+    {
+      "firstName": "Harshini",
+      "lastName": "Ravichandran",
+      "email": "harshini@gamil.com",
+      "userId": "harshini2006",
+      "password": "Harshini2006@",
+      "dateOfBirth": "2006-11-06",
+      "gender": "Female",
+      "role": "Reader",
+      "bio": "I am a  lifelong reader and literary critic specializing in contemporary fiction. They share honest book reviews and reading recommendations to help you find your next favorite story.",
+      "createdDate": "2026-06-27T05:54:34.017Z",
+      "id": "Rb6J5_6je3Q"
     }
   ],
   "articles": [

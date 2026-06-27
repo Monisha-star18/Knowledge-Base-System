@@ -299,7 +299,11 @@ $(document).ready(function()
 
             clearSignUpForm();
 
-            await Swal.fire({ icon: "success", title: "Successfully signed up!", text: "You can now log in." });
+            await Swal.fire({ icon: "success", title: "Successfully signed up!", text: "You can now log in." })
+            .then(() => {
+                    const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+                    loginModal.show();
+                });
 
             // Close sign-up modal, open login modal
             const signUpModal = bootstrap.Modal.getInstance(document.getElementById("signUpModal"));
