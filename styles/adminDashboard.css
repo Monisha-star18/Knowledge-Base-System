@@ -184,7 +184,7 @@ p.sub {
     border-top: 1px solid #F1F5F9;
     display: flex; gap: 0.5rem;
 }
-.btn-card-edit {
+.btn-card-accept {
     flex: 1; background: var(--color-accent-light);
     color: var(--color-accent); border: none;
     border-radius: 7px; font-size: 0.8rem; font-weight: 600;
@@ -192,9 +192,9 @@ p.sub {
     transition: background 0.15s;
     display: flex; align-items: center; justify-content: center; gap: 5px;
 }
-.btn-card-edit:hover { background: #E0E7FF; }
+.btn-card-accept:hover { background: #E0E7FF; }
 
-.btn-card-delete {
+.btn-card-reject {
     flex: 1; background: #FFF1F2;
     color: #E11D48; border: none;
     border-radius: 7px; font-size: 0.8rem; font-weight: 600;
@@ -202,7 +202,7 @@ p.sub {
     transition: background 0.15s;
     display: flex; align-items: center; justify-content: center; gap: 5px;
 }
-.btn-card-delete:hover { background: #FFE4E6; }
+.btn-card-reject:hover { background: #FFE4E6; }
 
 /* ── Badges ──────────────────────────────────────────────────────── */
 .badge-approved {

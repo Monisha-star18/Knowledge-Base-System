@@ -7,7 +7,7 @@
       "email": "monisha@gmail.com",
       "userId": "MON1235",
       "password": "Moni1805@",
-      "category": "security",
+      "category": "technology",
       "dateOfBirth": "2005-05-18",
       "createdDate": "2026-06-25T05:02:28.011Z",
       "gender": "Female",
@@ -107,7 +107,7 @@
       "id": "64umKPdognU",
       "reviewDate": null,
       "updatedAt": "Fri Jun 26 2026",
-      "isDeleted": true
+      "isDeleted": false
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -118,10 +118,12 @@
       "content": "Cloud security refers to the technologies, policies, and controls used to protect cloud-based systems, applications, and data from cyber threats. As organizations continue migrating to cloud environments, securing digital assets has become a top priority.\n\n1. Importance of Cloud Security\n\nCloud platforms store large volumes of sensitive information, including customer data, financial records, and business applications. Without proper security measures, organizations may face data breaches, financial losses, and reputational damage. Effective cloud security helps ensure confidentiality, integrity, and availability of information.\n\n2. Common Cloud Security Threats\n\nSeveral threats can compromise cloud environments:\n\nData Breaches: Unauthorized access to sensitive information.\nMisconfigured Resources: Publicly exposed storage buckets and databases.\nWeak Access Controls: Poor password practices and excessive user permissions.\nInsecure APIs: Vulnerabilities in cloud service interfaces.\nInsider Threats: Employees or contractors misusing access privileges.\n\nUnderstanding these risks allows organizations to implement stronger defenses.\n\n3. Security Frameworks and Best Practices\n\nMany organizations follow established frameworks such as NIST Cybersecurity Framework, ISO 27001, and Zero Trust Security. These frameworks provide structured guidelines for risk management and threat prevention.\n\nKey best practices include:\n\nEnabling Multi-Factor Authentication (MFA)\nUsing strong encryption for stored and transmitted data\nApplying the principle of least privilege\nConducting regular security audits\nContinuously monitoring cloud activities",
       "image": "https://picsum.photos/seed/article2/800/300",
       "createdAt": "25 Jun 2026",
-      "status": "pending",
+      "status": "approved",
       "id": "KKzaQkieLeU",
-      "isDeleted": true,
-      "reviewDate": null
+      "isDeleted": false,
+      "reviewDate": "27/06/2026",
+      "remark": "good",
+      "reviewedBy": "MON1235"
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -132,25 +134,29 @@
       "content": "Cloud computing has transformed the way people store and access information. Instead of saving files on a personal computer, users can store them on cloud platforms and access them from anywhere with an internet connection.\nOne major advantage of cloud computing is flexibility. Employees can work remotely and collaborate with team members regardless of location. This improves productivity and supports modern work environments.\nAnother benefit is cost savings. Businesses no longer need to invest heavily in physical servers and maintenance. Cloud service providers handle infrastructure management, allowing organizations to focus on their core activities.\nCloud computing also offers scalability. Companies can increase or decrease resources based on demand, making it easier to manage growth.\nAs technology continues to evolve, cloud computing will remain a key component of digital transformation and business innovation.",
       "image": "https://picsum.photos/seed/article3/800/300",
       "createdAt": "25 Jun 2026",
-      "status": "pending",
+      "status": "rejected",
       "id": "lzvklo9R_qU",
       "isDeleted": false,
-      "reviewDate": null
+      "reviewDate": "27/06/2026",
+      "remark": "not good the content is not enough",
+      "reviewedBy": "MON1235"
     },
     {
       "authorId": "1vEHgs8MIS4",
       "title": "Importance of a Digital Presence for Small Businesses",
-      "category": "design",
+      "category": "technology",
       "subtitle": "Reaching more customers through online platforms.",
       "intro": "A strong online presence helps businesses connect with customers and grow their brand. Digital platforms have become essential tools for modern businesses.",
       "content": "Today, most customers search online before purchasing products or services. Businesses without a website or social media presence may miss valuable opportunities.\n\nA professional website allows customers to learn about products, services, and contact information at any time. It also helps build trust and credibility.\n\nSocial media platforms provide businesses with a cost-effective way to engage with customers and promote their offerings. Regular updates and customer interaction can strengthen relationships and increase brand awareness.\n\nDigital marketing techniques such as search engine optimization and email marketing can further expand reach and attract new customers.\n\nIn a competitive market, maintaining a strong digital presence is essential for business growth and long-term success.",
       "image": "https://picsum.photos/seed/article4/800/300",
       "createdAt": "25 Jun 2026",
-      "status": "pending",
+      "status": "approved",
       "id": "__i9M2MkRr8",
-      "reviewDate": null,
+      "reviewDate": "27/06/2026",
       "isDeleted": false,
-      "updatedAt": "Fri Jun 26 2026"
+      "updatedAt": "Sat Jun 27 2026",
+      "remark": "good",
+      "reviewedBy": "MON1235"
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -189,11 +195,13 @@
       "content": "Here are five life hacks to increase your productivity:\n      1. Don’t Multitask\nYou’re trying to save time and get more done – doesn’t doing a few things at once sound like the most efficient way to squeeze a little more productivity out of your day? Counterintuitive as it may seem, you’re actually making yourself less efficient by multitasking. Neuroscientists have made their stance clear: multitasking simply doesn’t work. \n 2. Take Breaks\nJust as we delude ourselves into thinking that multitasking will make us more efficient, we also trick ourselves into thinking that working longer hours without breaks will help us get more accomplished. \n3. Keep a Clean Space\nA mind cluttered with random thoughts is obviously going to have a hard time focusing and getting work done. We work to clear these distractions from our brain… but what about our physical workspaces? Clutter on our desks or in our offices can have a big impact on our productivity and mental states.",
       "image": "https://picsum.photos/seed/article7/800/300",
       "createdAt": "Fri Jun 26 2026",
-      "status": "pending",
+      "status": "approved",
       "id": "H555FpJipTg",
-      "reviewDate": null,
+      "reviewDate": "27/06/2026",
       "isDeleted": false,
-      "updatedAt": "Fri Jun 26 2026"
+      "updatedAt": "Fri Jun 26 2026",
+      "remark": "good",
+      "reviewedBy": "MON1235"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

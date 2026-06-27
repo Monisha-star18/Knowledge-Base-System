@@ -1,4 +1,3 @@
-
 // import { API } from "./config.js";
 const API = "http://localhost:3000";
 
@@ -117,11 +116,11 @@ function renderCards() {
             footerRow = `<div class="card-date-row"><i class="fa-regular fa-clock"></i> Awaiting review</div>`;
             actionButtons = `
                 <div class="card-actions">
-                    <button class="btn-card-edit" >
+                    <button class="btn-card-accept" data-id="${art.id}">
                         <i class="fa-solid fa-pen"></i> Accept
                     </button>
-                    <button class="btn-card-delete" >
-                        <i class="fa-solid fa-trash"></i> Reject
+                    <button class="btn-card-reject" data-id="${art.id}">
+                        <i class="fa-solid fa-trash"></i> Reject 
                     </button>
                 </div>`;
         }
@@ -161,6 +160,186 @@ function renderCards() {
 
 
 
+// ── Review Modal ─────────────────────────────────────────────────────────────
+// Inject the modal markup once into the page
+$("body").append(`
+    <div id="review-modal-overlay" style="
+        display:none; position:fixed; inset:0;
+        background:rgba(0,0,0,.45); z-index:9999;
+        justify-content:center; align-items:center;">
+
+        <div id="review-modal" style="
+            background:#fff; border-radius:12px; width:100%; max-width:460px;
+            margin:16px; box-shadow:0 8px 32px rgba(0,0,0,.18);
+            overflow:hidden; font-family:inherit;">
+
+            <!-- Header -->
+            <div id="review-modal-header" style="
+                padding:18px 24px; display:flex;
+                align-items:center; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span id="review-modal-icon" style="font-size:1.4rem;"></span>
+                    <h5 id="review-modal-title" style="margin:0; font-size:1.1rem; font-weight:600;"></h5>
+                </div>
+                <button id="review-modal-close" style="
+                    background:none; border:none; font-size:1.3rem;
+                    cursor:pointer; color:#888; line-height:1;">&times;</button>
+            </div>
+
+            <!-- Body -->
+            <div style="padding:0 24px 8px;">
+                <label for="review-remark" style="
+                    display:block; font-size:.85rem;
+                    font-weight:500; color:#444; margin-bottom:6px;">
+                    Remark <span style="color:#e53935;">*</span>
+                </label>
+                <textarea id="review-remark" rows="4" placeholder="Write your review remark here..." style="
+                    width:100%; box-sizing:border-box; resize:vertical;
+                    border:1.5px solid #ddd; border-radius:8px;
+                    padding:10px 12px; font-size:.9rem; font-family:inherit;
+                    outline:none; transition:border-color .2s;"></textarea>
+                <p id="review-remark-error" style="
+                    color:#e53935; font-size:.8rem;
+                    margin:4px 0 0; display:none;">
+                    Remark is required.
+                </p>
+            </div>
+
+            <!-- Footer -->
+            <div style="
+                padding:16px 24px; display:flex;
+                justify-content:flex-end; gap:10px;">
+                <button id="review-modal-cancel" style="
+                    padding:8px 20px; border-radius:7px;
+                    border:1.5px solid #ccc; background:#fff;
+                    cursor:pointer; font-size:.9rem; color:#555;">
+                    Cancel
+                </button>
+                <button id="review-modal-confirm" style="
+                    padding:8px 22px; border-radius:7px;
+                    border:none; cursor:pointer;
+                    font-size:.9rem; font-weight:600; color:#fff;">
+                    Confirm
+                </button>
+            </div>
+        </div>
+    </div>
+`);
+
+// Focus style for textarea
+$("#review-remark").on("focus", function () {
+    $(this).css("border-color", "#667eea");
+}).on("blur", function () {
+    $(this).css("border-color", "#ddd");
+});
+
+// Helper: open the modal and return a Promise that resolves with the remark or null
+function openReviewModal(isAccept) {
+    return new Promise((resolve) => {
+        const overlay   = $("#review-modal-overlay");
+        const title     = $("#review-modal-title");
+        const icon      = $("#review-modal-icon");
+        const confirmBtn = $("#review-modal-confirm");
+        const remark    = $("#review-remark");
+        const error     = $("#review-remark-error");
+
+        // Configure for accept vs reject
+        if (isAccept) {
+            title.text("Accept Article");
+            icon.text("✅");
+            confirmBtn.css("background", "#4CAF50");
+        } else {
+            title.text("Reject Article");
+            icon.text("🚫");
+            confirmBtn.css("background", "#e53935");
+        }
+
+        // Reset state
+        remark.val("");
+        error.hide();
+
+        // Show overlay as flex
+        overlay.css("display", "flex");
+        remark.focus();
+
+        // ── Close handlers ──────────────────────────────────────────
+        function closeModal(result) {
+            overlay.css("display", "none");
+            // Unbind to avoid stacking listeners on future opens
+            $("#review-modal-close, #review-modal-cancel").off("click.review");
+            $("#review-modal-confirm").off("click.review");
+            overlay.off("click.review");
+            $(document).off("keydown.review");
+            resolve(result);
+        }
+
+        $("#review-modal-close, #review-modal-cancel").on("click.review", () => closeModal(null));
+
+        // Click outside modal box closes it
+        overlay.on("click.review", function (e) {
+            if ($(e.target).is(overlay)) closeModal(null);
+        });
+
+        // Escape key closes it
+        $(document).on("keydown.review", function (e) {
+            if (e.key === "Escape") closeModal(null);
+        });
+
+        // Confirm
+        $("#review-modal-confirm").on("click.review", function () {
+            const val = remark.val().trim();
+            if (!val) {
+                error.show();
+                remark.focus();
+                return;
+            }
+            closeModal(val);
+        });
+    });
+}
+
+// Event delegation for Accept / Reject buttons (works with dynamically rendered cards)
+$(document).on("click", ".btn-card-accept, .btn-card-reject", async function () {
+    const articleId  = $(this).data("id");
+    const isAccept   = $(this).hasClass("btn-card-accept");
+    const action     = isAccept ? "approved" : "rejected";
+
+    const remark = await openReviewModal(isAccept);
+    if (!remark) return; // user cancelled
+
+    try {
+        const reviewDate = new Date().toLocaleDateString();
+        const res = await fetch(`${API}/articles/${articleId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                status: action,
+                remark,
+                reviewDate,
+                reviewedBy: loggedUser.userId
+            })
+        });
+
+        if (!res.ok) throw new Error("Failed to update article status.");
+
+        // Update local cache so re-render reflects the change instantly
+        const idx = localArticles.findIndex(a => a.id == articleId);
+        if (idx !== -1) {
+            localArticles[idx].status     = action;
+            localArticles[idx].remark     = remark;
+            localArticles[idx].reviewDate = reviewDate;
+        }
+
+        renderCards();
+
+    } catch (err) {
+        console.error(err);
+        alert("Update failed: " + err.message);
+    }
+});
+
+
+
 // Logout execution 
 function handleLogout()
 {
@@ -173,4 +352,3 @@ function handleLogout()
             }
         });
 }
-
