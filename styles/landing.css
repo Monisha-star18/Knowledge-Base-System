@@ -21,7 +21,7 @@
 .landing-content { color: var(--white-text);}
 .tag-line {color: var(--color-primary);}
 
-.Features{ background: var(--background);}
+#more{ background: var(--background);}
 
 footer{background-color: var(--color-primary); color: var(--white-text);}
 
@@ -99,3 +99,7 @@ html {
     font-size: 0.84rem;
     font-weight: 100;
   }
+
+  .star-rating {font-size: 24px; }
+.star-rating .filled {color: gold; }
+.star-rating .empty {color: #ccc;}
