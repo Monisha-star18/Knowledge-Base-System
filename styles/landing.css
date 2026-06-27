@@ -21,7 +21,7 @@
 .landing-content { color: var(--white-text);}
 .tag-line {color: var(--color-primary);}
 
-#more{ background: var(--background);}
+#connect{ background: var(--background);}
 
 footer{background-color: var(--color-primary); color: var(--white-text);}
 
@@ -61,21 +61,24 @@ html {
 }
 
 /* about */
-.aboutTop-sub, .about-sub,.card-title,.card-text{font-family: 'Segoe UI', system-ui, sans-serif;}
+.aboutTop-sub, .about-sub,.card-title,.card-text,.top-sub{font-family: 'Segoe UI', system-ui, sans-serif;}
 
-.aboutTop-sub
+.aboutTop-sub , .top-sub
 {
-    font-size: 0.72rem;letter-spacing: 0.2em;color: #E8440A;
+    font-size: 0.72rem;letter-spacing: 0.2em;
     text-transform: uppercase;font-weight: 700;
 }
 
- .about-heading 
+.aboutTop-sub{color: #E8440A;}
+.top-sub,.connect-heading{color:white ;}
+
+ .about-heading ,.connect-heading
  {
     font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
     font-size: 2.6rem;font-weight: 700;
     line-height: 1.1;
-    color: #b05a2f;
   }
+  .about-heading{color: #b05a2f;}
 
 .about-sub {font-size: 0.97rem;line-height: 1.7;}
 
@@ -103,3 +106,23 @@ html {
   .star-rating {font-size: 24px; }
 .star-rating .filled {color: gold; }
 .star-rating .empty {color: #ccc;}
+
+/* 
+.aboutTop-sub, .about-sub,.card-title,.card-text{font-family: 'Segoe UI', system-ui, sans-serif;}
+
+.aboutTop-sub
+{
+    font-size: 0.72rem;letter-spacing: 0.2em;color: #E8440A;
+    text-transform: uppercase;font-weight: 700;
+}
+
+ .about-heading 
+ {
+    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 2.6rem;font-weight: 700;
+    line-height: 1.1;
+    color: #b05a2f;
+  }
+
+.about-sub {font-size: 0.97rem;line-height: 1.7;} */
+
