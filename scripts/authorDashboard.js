@@ -1,5 +1,7 @@
-
+// import { API } from "./config.js";
 const API = "http://localhost:3000";
+
+
 let loggedUser = null;
 let localArticles = []; 
 let currentFilter = "all";

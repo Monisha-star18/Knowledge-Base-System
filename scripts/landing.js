@@ -1,3 +1,6 @@
+// import { API } from "./config.js";
+const API = "http://localhost:3000";
+
 
 // function connect to the clean button in the sigup model 
 //used to clear the form 
@@ -23,7 +26,6 @@ function clearLoginForm()
 let emailExists = false;
 let userIdExists = false;
 
-const API = "http://localhost:3000";
 
 // regex 
 const nameRegex = /^[a-zA-Z\s]{3,30}$/;

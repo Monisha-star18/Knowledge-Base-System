@@ -1,3 +1,5 @@
+// import { API } from "./config.js";
+
 const API = "http://localhost:3000";
 
 // Display the date in the top
@@ -119,7 +121,7 @@ document.getElementById('articleForm').addEventListener('submit', async function
         // ── EDIT MODE: PATCH existing article ──────────────────────────────
         if (isEditMode) {
 
-            
+             
 
             const updatedArticle = {
                 ...originalArticle,                                      // keep image, createdAt, authorId, etc.
@@ -131,6 +133,8 @@ document.getElementById('articleForm').addEventListener('submit', async function
                 updatedAt:  displayDate                                  // today's date auto-set
             };
 
+            const submitBtn = document.querySelector('.btn-submit');
+            
             const saveRes = await fetch(`${API}/articles/${editId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
@@ -142,7 +146,7 @@ document.getElementById('articleForm').addEventListener('submit', async function
             Swal.fire({ icon: 'success', title: 'Article updated!', text: 'Resubmitted for review.' })
                 .then(() => { window.location.href = '../pages/authorDashboard.html'; });
 
-        // ── CREATE MODE: POST new article ───────────────────────────────────
+        // ── CREATE MODE───────────────────────────────────
         } 
         else {
             const countRes = await fetch(`${API}/articles?authorId=${loggedUser.id}`);

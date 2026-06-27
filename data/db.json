@@ -78,6 +78,19 @@
       "bio": "I am a  lifelong reader and literary critic specializing in contemporary fiction. They share honest book reviews and reading recommendations to help you find your next favorite story.",
       "createdDate": "2026-06-27T05:54:34.017Z",
       "id": "Rb6J5_6je3Q"
+    },
+    {
+      "firstName": "Kalia",
+      "lastName": "Ravi",
+      "email": "ravi@gamil.com",
+      "userId": "ravi123",
+      "password": "Ravi@123",
+      "dateOfBirth": "1950-12-12",
+      "gender": "Female",
+      "role": "Reader",
+      "bio": "Hello world",
+      "createdDate": "2026-06-27T06:21:23.539Z",
+      "id": "Ztl2QSn45-U"
     }
   ],
   "articles": [

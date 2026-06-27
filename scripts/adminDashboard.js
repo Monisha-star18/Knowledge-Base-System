@@ -1,5 +1,7 @@
 
+// import { API } from "./config.js";
 const API = "http://localhost:3000";
+
 let loggedUser = null;
 let localArticles = []; 
 let currentFilter = "all";
@@ -114,14 +116,14 @@ function renderCards() {
             statusBadge = `<span class="badge-pending">⏳ Pending</span>`;
             footerRow = `<div class="card-date-row"><i class="fa-regular fa-clock"></i> Awaiting review</div>`;
             actionButtons = `
-                // <div class="card-actions">
-                //     <button class="btn-card-edit" onclick="window.location.href='../pages/addArticle.html?id=${art.id}'">
-                //         <i class="fa-solid fa-pen"></i> Accept
-                //     </button>
-                //     <button class="btn-card-delete" onclick="deleteArticle('${art.id}')">
-                //         <i class="fa-solid fa-trash"></i> Reject
-                //     </button>
-                // </div>`;
+                <div class="card-actions">
+                    <button class="btn-card-edit" >
+                        <i class="fa-solid fa-pen"></i> Accept
+                    </button>
+                    <button class="btn-card-delete" >
+                        <i class="fa-solid fa-trash"></i> Reject
+                    </button>
+                </div>`;
         }
 
         const cardHtml = `
