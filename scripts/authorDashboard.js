@@ -110,6 +110,15 @@ function renderCards() {
         } else if (art.status === "rejected") {
             statusBadge = `<span class="badge-rejected">✕ Rejected</span>`;
             footerRow = `<div class="card-date-row rejected"><i class="fa-solid fa-circle-xmark"></i> Rejected on: ${art.reviewDate}</div>`;
+            actionButtons = `
+                <div class="card-actions">
+                    <button class="btn-card-edit" onclick="window.location.href='../pages/addArticle.html?id=${art.id}'">
+                        <i class="fa-solid fa-pen"></i> Reapply
+                    </button>
+                    <button class="btn-card-delete" onclick="deleteArticle('${art.id}')">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </div>`;
         } else {
             statusBadge = `<span class="badge-pending">⏳ Pending</span>`;
             footerRow = `<div class="card-date-row"><i class="fa-regular fa-clock"></i> Awaiting review</div>`;

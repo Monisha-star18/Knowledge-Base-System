@@ -167,10 +167,11 @@
       "content": "With increasing internet usage, cyber threats have become more common. Hackers often target users through phishing emails, weak passwords, and malicious websites.\n\nOne of the most important security practices is creating strong passwords. Passwords should be unique, difficult to guess, and updated regularly. Using a password manager can help keep accounts secure.\n\nEnabling two-factor authentication adds an extra layer of protection. Even if a password is compromised, unauthorized users cannot easily access the account.\n\nUsers should also avoid clicking suspicious links or downloading files from unknown sources. Keeping software and devices updated helps protect against newly discovered vulnerabilities.\n\nBy following these simple cybersecurity measures, individuals can improve their online safety and protect their valuable information.",
       "image": "https://picsum.photos/seed/article5/800/300",
       "createdAt": "25 Jun 2026",
-      "status": "rejected",
+      "status": "pending",
       "id": "FjA2LUzzgDs",
       "isDeleted": false,
-      "reviewDate": "26 Jun 2026"
+      "reviewDate": null,
+      "updatedAt": "Mon Jun 29 2026"
     },
     {
       "authorId": "1vEHgs8MIS4",
