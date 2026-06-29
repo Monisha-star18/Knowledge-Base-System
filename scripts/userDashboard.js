@@ -124,5 +124,7 @@ function renderCards() {
 
         window.location.href = `readmore.html?id=${articleId}`;
     });
+
+    
 }
 

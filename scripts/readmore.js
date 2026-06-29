@@ -1,5 +1,8 @@
+
+
 $(document).ready(async function () {
 
+    
     // Setup profile offcanvas
     const userData = localStorage.getItem("loggedUser");
     if (!userData) { window.location.href = "../pages/index.html"; return; }

@@ -28,10 +28,14 @@
         </a>
 
         <!-- right nav -->
-        <a href="../pages/authorDashboard.html" class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-2 text-decoration-none fw-medium small border back-btn">
+        <!-- <a href="../pages/authorDashboard.html" class="d-inline-flex align-items-center gap-2 px-3 py-2 rounded-2 text-decoration-none fw-medium small border back-btn">
             <i class="fa-solid fa-arrow-left"></i>
             Back to Dashboard
-        </a>
+        </a> -->
+        <button class="back-btn" onclick="history.back()">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Dashboard
+        </button>
     </nav>
 
     <!-- page -->
@@ -118,10 +122,10 @@
                     Full Content of Article <span class="req">*</span>
                 </label>
                 <textarea class="field-textarea tall " id="articleContent"
-                          placeholder="Write the complete article content here…" maxlength="1000">
+                          placeholder="Write the complete article content here…" maxlength="3000">
                 </textarea>
                 <div class="d-flex mt-1">
-                    <span id="content-count" class="ms-auto small text-secondary">1000 chars max</span>
+                    <span id="content-count" class="ms-auto small text-secondary">3000 chars max</span>
                 </div>
                 <div class="invalid-msg">Content is required.</div>
             </div>
