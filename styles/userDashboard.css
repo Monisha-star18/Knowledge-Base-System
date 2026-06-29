@@ -36,16 +36,16 @@ p.sub {
 }
 
 /* ── Offcanvas ───────────────────────────────────────────────────── */
-#authorOffcanvas { background: #fff; color: var(--color-primary); }
+#userOffcanvas { background: #fff; color: var(--color-primary); }
 
-#authorOffcanvas .offcanvas-header {
+#userOffcanvas .offcanvas-header {
     background: var(--color-primary-dark);
     color: var(--white-text);
     border-bottom: none;
     padding: 1.1rem 1.25rem;
 }
-#authorOffcanvas .offcanvas-title { color: var(--white-text); font-size: 0.95rem; font-weight: 600; }
-#authorOffcanvas .btn-close { filter: invert(1) brightness(2); opacity: 0.8; }
+#userOffcanvas .offcanvas-title { color: var(--white-text); font-size: 0.95rem; font-weight: 600; }
+#userOffcanvas .btn-close { filter: invert(1) brightness(2); opacity: 0.8; }
 
 .avatar-row { padding: 1.4rem 0 1rem; }
 .avatar-row .fa-circle-user { color: var(--color-accent); opacity: 0.9; }
