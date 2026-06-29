@@ -45,7 +45,7 @@ $(document).ready(async function () {
         $("#article-loading").hide();
         $("#article-content").show();
 
-        if (art.views === 100) {
+        if (art.views === 100 || art.views === 1) {
         confetti({
             particleCount: 300,   // number of pieces
             spread: 90,           // how wide it fans out
@@ -53,6 +53,8 @@ $(document).ready(async function () {
             colors: ["#360ae8", "#c70874", "#ffffff"] // your brand colors
         });
         }
+        
+
 
         
 

@@ -529,7 +529,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 11
+      "views": 10
     },
     {
       "authorId": "dJ8QvM1zKe4",
@@ -637,6 +637,25 @@
       "reviewDate": null,
       "updatedAt": "Mon Jun 29 2026",
       "isDeleted": false
+    },
+    {
+      "authorId": "dJ8QvM1zKe4",
+      "authorName": "Sneha Narayanan",
+      "title": "The AI Revolution and Automation in world",
+      "category": "technology",
+      "subtitle": "Artificial intelligence continues to transform corporate strategy,while AI adoption brings signifycy",
+      "intro": "Navigating today’s competitive business landscape requires mastering three essential pillars: leveraging Artificial Intelligence (AI), building margin resilience, and successfully managing business ownership structures. Companies across the globe are adapting to these trends .",
+      "content": "Efficiency: AI helps founders build profitable solo-operations and mine data, though leaders are warned to avoid falling into common AI traps.Optimization: Many organizations are running audits before integrating AI to ensure they are not overbilled or misallocating resources.HR & Work: Executives are rethinking automation and relying more on their workforce to bridge the gaps in AI infrastructure.\n\n Engineering Margin ResilienceWith global economic shifts and shifting capital allocations, market dynamics remain volatile. To survive these changes, industry experts focus heavily on margin resilience.Supply Chain: Re-evaluating the supply chain and incorporating standard technology processes enables better business scalability.",
+      "image": "https://picsum.photos/seed/article6/800/300",
+      "createdAt": "Mon Jun 29 2026",
+      "status": "approved",
+      "reviewDate": "29/06/2026",
+      "isDeleted": false,
+      "id": "h0g-mz3vYck",
+      "updatedAt": "Mon Jun 29 2026",
+      "remark": "good",
+      "reviewedBy": "SANJAY123",
+      "views": 2
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
