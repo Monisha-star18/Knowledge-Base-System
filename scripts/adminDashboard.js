@@ -118,7 +118,7 @@ function renderCards() {
                         <span class="card-meta-item">
                             <i class="fa-solid fa-calendar-days"></i> Submitted: ${art.createdAt}
                         </span>
-                        <!-- ternarany operator used to check if  updatedAt these else dont display -->
+                        <!-- ternary operator used to check if updatedAt exists else don't display -->
                         ${art.updatedAt ? `
                         <span class="card-meta-item">
                             <i class="fa-solid fa-calendar-days"></i> Updated: ${art.updatedAt}
@@ -130,7 +130,7 @@ function renderCards() {
                        
                     </div>
                     ${footerRow}
-                     ${art.remark ?`<span class="card-meta-item"> Remark : ${art.remark} </span>` : ''}
+                    ${art.remark ? `<span class="card-meta-item"> Remark : ${art.remark} </span>` : ''}
                     ${actionButtons}
                 </div>
             </div>`;
@@ -141,140 +141,63 @@ function renderCards() {
 
 
 // ── Review Modal ─────────────────────────────────────────────────────────────
-// Inject the modal markup once into the page
-$("body").append(`
-    <div id="review-modal-overlay" style="
-        display:none; position:fixed; inset:0;
-        background:rgba(0,0,0,.45); z-index:9999;
-        justify-content:center; align-items:center;">
+// Uses the #reviewModal already present in the HTML (Bootstrap modal)
 
-        <div id="review-modal" style="
-            background:#fff; border-radius:12px; width:100%; max-width:460px;
-            margin:16px; box-shadow:0 8px 32px rgba(0,0,0,.18);
-            overflow:hidden; font-family:inherit;">
-
-            <!-- Header -->
-            <div id="review-modal-header" style="
-                padding:18px 24px; display:flex;
-                align-items:center; justify-content:space-between;">
-                <div style="display:flex; align-items:center; gap:10px;">
-                    <span id="review-modal-icon" style="font-size:1.4rem;"></span>
-                    <h5 id="review-modal-title" style="margin:0; font-size:1.1rem; font-weight:600;"></h5>
-                </div>
-                <button id="review-modal-close" style="
-                    background:none; border:none; font-size:1.3rem;
-                    cursor:pointer; color:#888; line-height:1;">&times;</button>
-            </div>
-
-            <!-- Body -->
-            <div style="padding:0 24px 8px;">
-                <label for="review-remark" style="
-                    display:block; font-size:.85rem;
-                    font-weight:500; color:#444; margin-bottom:6px;">
-                    Remark <span style="color:#e53935;">*</span>
-                </label>
-                <textarea id="review-remark" rows="4" placeholder="Write your review remark here..." style="
-                    width:100%; box-sizing:border-box; resize:vertical;
-                    border:1.5px solid #ddd; border-radius:8px;
-                    padding:10px 12px; font-size:.9rem; font-family:inherit;
-                    outline:none; transition:border-color .2s;"></textarea>
-                <p id="review-remark-error" style="
-                    color:#e53935; font-size:.8rem;
-                    margin:4px 0 0; display:none;">
-                    Remark is required.
-                </p>
-            </div>
-
-            <!-- Footer -->
-            <div style="
-                padding:16px 24px; display:flex;
-                justify-content:flex-end; gap:10px;">
-                <button id="review-modal-cancel" style="
-                    padding:8px 20px; border-radius:7px;
-                    border:1.5px solid #ccc; background:#fff;
-                    cursor:pointer; font-size:.9rem; color:#555;">
-                    Cancel
-                </button>
-                <button id="review-modal-confirm" style="
-                    padding:8px 22px; border-radius:7px;
-                    border:none; cursor:pointer;
-                    font-size:.9rem; font-weight:600; color:#fff;">
-                    Confirm
-                </button>
-            </div>
-        </div>
-    </div>
-`);
-
-// Focus style for textarea
-$("#review-remark").on("focus", function () {
-    $(this).css("border-color", "#667eea");
-}).on("blur", function () {
-    $(this).css("border-color", "#ddd");
-});
-
-// Helper: open the modal and return a Promise that resolves with the remark or null
+// Helper: open the Bootstrap modal and return a Promise that resolves with the remark or null
 function openReviewModal(isAccept) {
     return new Promise((resolve) => {
-        const overlay   = $("#review-modal-overlay");
-        const title     = $("#review-modal-title");
-        const icon      = $("#review-modal-icon");
-        const confirmBtn = $("#review-modal-confirm");
-        const remark    = $("#review-remark");
-        const error     = $("#review-remark-error");
+        const modal      = new bootstrap.Modal(document.getElementById("reviewModal"));
+        const title      = $("#reviewTitle");
+        const confirmBtn = $("#confirmReview");
+        const remark     = $("#reviewRemark");
+        const error      = $("#remarkError");
 
-        // Configure for accept vs reject
-        if (isAccept) {
-            title.text("Accept Article");
-            icon.text("✅");
-            confirmBtn.css("background", "#4CAF50");
-        } else {
-            title.text("Reject Article");
-            icon.text("🚫");
-            confirmBtn.css("background", "#e53935");
-        }
+        // Configure title for accept vs reject
+        title.text(isAccept ? "Accept Article" : "Reject Article");
+
+        // Style the confirm button to match the action
+        confirmBtn
+            .removeClass("btn-success btn-danger")
+            .addClass(isAccept ? "btn-success" : "btn-danger");
 
         // Reset state
         remark.val("");
-        error.hide();
+        error.addClass("d-none");
 
-        // Show overlay as flex
-        overlay.css("display", "flex");
-        remark.focus();
+        // Show the modal
+        modal.show();
 
-        // ── Close handlers ──────────────────────────────────────────
-        function closeModal(result) {
-            overlay.css("display", "none");
-            // Unbind to avoid stacking listeners on future opens
-            $("#review-modal-close, #review-modal-cancel").off("click.review");
-            $("#review-modal-confirm").off("click.review");
-            overlay.off("click.review");
-            $(document).off("keydown.review");
-            resolve(result);
-        }
-
-        $("#review-modal-close, #review-modal-cancel").on("click.review", () => closeModal(null));
-
-        // Click outside modal box closes it
-        overlay.on("click.review", function (e) {
-            if ($(e.target).is(overlay)) closeModal(null);
+        // ── Clear error as soon as the user starts typing ────────────
+        remark.on("input.review", function () {
+            if ($(this).val().trim()) error.addClass("d-none");
         });
 
-        // Escape key closes it
-        $(document).on("keydown.review", function (e) {
-            if (e.key === "Escape") closeModal(null);
-        });
-
-        // Confirm
-        $("#review-modal-confirm").on("click.review", function () {
+        // ── Confirm handler ──────────────────────────────────────────
+        // Use .on() (not .one()) so it survives failed validation clicks
+        confirmBtn.on("click.review", function () {
             const val = remark.val().trim();
             if (!val) {
-                error.show();
-                remark.focus();
-                return;
+                error.removeClass("d-none");
+                remark.trigger("focus");
+                return; // keep handler alive for next attempt
             }
-            closeModal(val);
+            cleanup();
+            modal.hide();
+            resolve(val);
         });
+
+        // ── Cancel / close handler ───────────────────────────────────
+        // Fires when Bootstrap fully hides the modal (X button, Cancel, backdrop click, Escape)
+        $("#reviewModal").one("hidden.bs.modal", function () {
+            cleanup();
+            resolve(null);
+        });
+
+        // Remove all listeners bound during this modal session
+        function cleanup() {
+            confirmBtn.off("click.review");
+            remark.off("input.review");
+        }
     });
 }
 
@@ -317,6 +240,3 @@ $(document).on("click", ".btn-card-accept, .btn-card-reject", async function () 
         alert("Update failed: " + err.message);
     }
 });
-
-
-

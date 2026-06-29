@@ -231,16 +231,17 @@
       "category": "security",
       "subtitle": "Practical guide to security",
       "intro": "Learn the fundamentals of security with practical examples and modern best practices.",
-      "content": "This article discusses security in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth. ",
+      "content": "This article discusses security in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.",
       "image": "https://picsum.photos/seed/article3/800/300",
       "createdAt": "29 Jun 2026",
-      "status": "rejected",
+      "status": "approved",
       "id": "ART1003",
       "reviewDate": "29/06/2026",
       "updatedAt": "Mon Jun 29 2026",
       "isDeleted": false,
-      "remark": "Needs more detailed content.",
-      "reviewedBy": "SANJAY123"
+      "remark": "Good content",
+      "reviewedBy": "ARUN789",
+      "views": 1
     },
     {
       "authorId": "aK9LmP2xQ7R",
@@ -259,7 +260,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 29
+      "views": 31
     },
     {
       "authorId": "aK9LmP2xQ7R",
@@ -375,11 +376,13 @@
       "content": "This article discusses technology in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth. ",
       "image": "https://picsum.photos/seed/article11/800/300",
       "createdAt": "29 Jun 2026",
-      "status": "pending",
+      "status": "rejected",
       "id": "ART1011",
-      "reviewDate": null,
+      "reviewDate": "29/06/2026",
       "updatedAt": "Mon Jun 29 2026",
-      "isDeleted": false
+      "isDeleted": false,
+      "remark": "bad",
+      "reviewedBy": "SANJAY123"
     },
     {
       "authorId": "cX6UwR5nHs9",
@@ -398,7 +401,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 54
+      "views": 55
     },
     {
       "authorId": "cX6UwR5nHs9",
@@ -463,11 +466,14 @@
       "content": "This article discusses technology in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth. ",
       "image": "https://picsum.photos/seed/article16/800/300",
       "createdAt": "29 Jun 2026",
-      "status": "pending",
+      "status": "approved",
       "id": "ART1016",
-      "reviewDate": null,
+      "reviewDate": "29/06/2026",
       "updatedAt": "Mon Jun 29 2026",
-      "isDeleted": false
+      "isDeleted": false,
+      "remark": "good",
+      "reviewedBy": "SANJAY123",
+      "views": 1
     },
     {
       "authorId": "dJ8QvM1zKe4",
@@ -523,7 +529,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 7
+      "views": 11
     },
     {
       "authorId": "dJ8QvM1zKe4",
@@ -551,11 +557,14 @@
       "content": "This article discusses technology in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth. ",
       "image": "https://picsum.photos/seed/article21/800/300",
       "createdAt": "29 Jun 2026",
-      "status": "pending",
+      "status": "approved",
       "id": "ART1021",
-      "reviewDate": null,
+      "reviewDate": "29/06/2026",
       "updatedAt": "Mon Jun 29 2026",
-      "isDeleted": false
+      "isDeleted": false,
+      "remark": "aaaaaaaaaaaaa",
+      "reviewedBy": "SANJAY123",
+      "views": 100
     },
     {
       "authorId": "eP3HsK7wNc5",
@@ -574,7 +583,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 58
+      "views": 63
     },
     {
       "authorId": "eP3HsK7wNc5",
@@ -611,7 +620,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 11
+      "views": 14
     },
     {
       "authorId": "eP3HsK7wNc5",

@@ -116,13 +116,16 @@ function renderCards() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ views: (art.views || 0) + 1 })
             });
+            
+            await fetchAndRenderArticles();
 
         } catch (err) {
             console.error("Failed to update views:", err);
             // Don't block navigation even if patch fails
         }
-
+        
         window.location.href = `readmore.html?id=${articleId}`;
+         
     });
 
     

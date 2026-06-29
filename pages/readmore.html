@@ -134,10 +134,15 @@
         <div class="container article-wrap">
 
             <!-- Back button -->
-            <button class="btn-back" onclick="history.back()">
-                <i class="fa-solid fa-arrow-left"></i> Back
-            </button>
+            <div class="d-flex justify-content-between">
+                <button class="btn-back" onclick="history.back()">
+                    <i class="fa-solid fa-arrow-left"></i> Back
+                </button>
 
+                <p class="p-2 rounded-pill text-light article-count"> </p>
+
+            </div>
+            
             <!-- Loading state -->
             <div id="article-loading" class="text-center text-muted my-5">Loading article...</div>
 
@@ -185,6 +190,8 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -28,9 +28,6 @@ body { background: #F1F5F9; color: var(--color-primary); }
 
 /* ── Back Button ─────────────────────────────────────────────────── */
 .btn-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
     background: none;
     border: 1.5px solid #CBD5E1;
     color: #475569;
@@ -44,6 +41,7 @@ body { background: #F1F5F9; color: var(--color-primary); }
 }
 .btn-back:hover { border-color: #E8440A; color: #E8440A; }
 
+.article-count{background-color: #E8440A;}
 /* ── Hero Image ──────────────────────────────────────────────────── */
 .article-hero {
     position: relative;

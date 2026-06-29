@@ -105,36 +105,8 @@
                 <h1 class="title mt-4">Admin Dashboard</h1>
                 <p class="sub" id="sub-title">Manage and track your articles</p>
             </div>
-            <!-- <div class="col-6 d-flex justify-content-end align-items-center gap-3 mt-4">
-                <a href="../pages/addArticle.html"
-                    class="btn btn-outline-secondary btn-sm rounded-3 px-3 fw-medium text-decoration-none">
-                        <i class="fa-solid fa-plus me-1"></i>Add Request
-                </a>
-
-                <button type="button" data-bs-toggle="modal" data-bs-target="#restoreModal"
-                        class="btn btn-outline-secondary btn-sm rounded-3 px-3 fw-medium" onclick="restoreArticle()">
-                    <i class="fa-solid fa-rotate-left me-1"></i> Restore
-                </button>
-            </div> -->
         </div>
 
-        <!-- <div class="modal" tabindex="-1" id="restoreModal">
-            <div class="modal-dialog     modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5>Restore the articles</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body" id="restoreModal-content">
-                        
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
         
         <!-- Filter Bar -->
@@ -152,6 +124,40 @@
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
             <div class="search-box p-2 w-75 rounded-pill">
                 <input type="text" id="searchInput" placeholder="Search articles…" class="p-2">
+            </div>
+        </div>
+
+        <!-- Review Modal -->
+        <div class="modal fade" id="reviewModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reviewTitle">Review Article</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <label class="form-label">Remark <span class="text-danger">*</span></label>
+                        <textarea class="form-control" id="reviewRemark" rows="4"
+                            placeholder="Enter your remark"></textarea>
+
+                        <small class="text-danger d-none" id="remarkError">
+                            Remark is required.
+                        </small>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <button class="btn btn-primary" id="confirmReview">
+                            Confirm
+                        </button>
+                    </div>
+
+                </div>
             </div>
         </div>
 

@@ -47,11 +47,16 @@ if (isEditMode) {
             // show admin remark if available (from rejection)
             if (article.remark) {
                 const dateEl = document.getElementById('created-date');
-                if (dateEl) dateEl.insertAdjacentHTML('afterend', `
-                    <div class="alert alert-warning mt-2 mb-0" style="font-size:0.85rem;">
-                        <i class="fa-solid fa-comment"></i> <strong>Admin Remark:</strong> ${article.remark}
-                    </div>
-                `);
+                if (dateEl) {
+                    const badgeDiv = dateEl.closest('.date-badge');
+                    // Make parent wrap so remark goes to next line
+                    badgeDiv.parentElement.style.flexWrap = 'wrap';
+                    badgeDiv.insertAdjacentHTML('afterend', `
+                        <div class="alert alert-warning mt-2 mb-0 w-100" style="font-size:0.85rem;">
+                            <i class="fa-solid fa-comment"></i> <strong>Admin Remark:</strong> ${article.remark}
+                        </div>
+                    `);
+                }
             }
         })
         .catch(err => {

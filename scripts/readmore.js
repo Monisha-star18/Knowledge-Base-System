@@ -25,6 +25,7 @@ $(document).ready(async function () {
         const art = await res.json();
 
         // Populate fields
+        $(".article-count").html(`<i class="fa-solid fa-user"></i> <strong>${art.views}</strong> person to read this article!`);
         $("#art-image").attr("src", art.image);
         $("#art-category").text(art.category.charAt(0).toUpperCase() + art.category.slice(1));
         $("#art-title").text(art.title);
@@ -44,9 +45,23 @@ $(document).ready(async function () {
         $("#article-loading").hide();
         $("#article-content").show();
 
+        if (art.views === 100) {
+        confetti({
+            particleCount: 300,   // number of pieces
+            spread: 90,           // how wide it fans out
+            origin: { y: 0.6 },  // where it fires from (0=top, 1=bottom)
+            colors: ["#360ae8", "#c70874", "#ffffff"] // your brand colors
+        });
+        }
+
+        
+
     } catch (err) {
         console.error(err);
         $("#article-loading").hide();
         $("#article-error").show();
     }
+
+    
+
 });
