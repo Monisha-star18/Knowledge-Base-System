@@ -1,7 +1,3 @@
-// import { API } from "./config.js";
-// const API = "http://localhost:3000";
-
-
 let loggedUser = null;
 let localArticles = []; 
 let currentFilter = "all";
@@ -62,12 +58,11 @@ function renderCards() {
 
     // Filter array
     let filtered = localArticles.filter(art => {
-        const notDeleted  = !art.isDeleted
         const matchesFilter = (currentFilter === "all" || art.status === currentFilter);
         const matchesSearch = art.title.toLowerCase().includes(searchVal) || 
                               art.subtitle.toLowerCase().includes(searchVal) || 
                               art.category.toLowerCase().includes(searchVal);
-        return notDeleted && matchesFilter && matchesSearch;
+        return  matchesFilter && matchesSearch;
     });
 
     if (filtered.length === 0) {
@@ -84,6 +79,7 @@ function renderCards() {
         if (art.status === "approved") {
             statusBadge = `<span class="badge-approved">✓ Approved</span>`;
             footerRow = `<div class="card-date-row approved"><i class="fa-solid fa-circle-check"></i> Approved on: ${art.reviewDate}</div>`;
+            
         } else if (art.status === "rejected") {
             statusBadge = `<span class="badge-rejected">✕ Rejected</span>`;
             footerRow = `<div class="card-date-row rejected"><i class="fa-solid fa-circle-xmark"></i> Rejected on: ${art.reviewDate}</div>`;
@@ -136,6 +132,7 @@ function renderCards() {
                         </span>
                     </div>
                     ${footerRow}
+                    ${art.remark ?`<span class="card-meta-item"> Remark : ${art.remark} </span>` : ''}
                     ${actionButtons}
                 </div>
             </div>`;
@@ -162,34 +159,58 @@ async function deleteArticle(id)
 //restore 
 async function restoreArticle() {
 
-    const restoreContainer = $("#restoreModal-content");
-    restoreContainer.empty();
+    try{
+        const restoreContainer = $("#restoreModal-content");
+        restoreContainer.empty();
 
-    const restore = await fetch(`${API}/articles?authorId=${loggedUser.id}&isDeleted=true`);
-    if (!restore.ok) throw new Error("Failed to load articles");
-    localRestoreArticles = await restore.json();
+        const restore = await fetch(`${API}/articles?authorId=${loggedUser.id}&isDeleted=true`);
+        if (!restore.ok) throw new Error("Failed to load articles");
+        let localRestoreArticles = await restore.json();
 
-    console.log(localRestoreArticles);
-    localRestoreArticles.forEach(restoreArt => {
+        if (localRestoreArticles.length === 0) 
+        {
+                restoreContainer.append(`<div class="text-center text-muted my-4">No deleted articles to restore.</div>`);
+                return;
+        }
 
-        const restoreCard = `
-            <div class="container restoreSection">
-                <div class="card p-3 mb-3">          
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <p class="mb-1 fw-semibold">Title : ${restoreArt.title}</p>
-                            <small class="text-muted">Created date : ${restoreArt.createdAt}</small>
-                        </div>                          
-                        <div>
-                            <button class="btn btn-danger rounded-pill restorSpecificArticle" data-id="${restoreArt.id}">Restore</button>
+    
+    
+    
+        localRestoreArticles.forEach(restoreArt => 
+        {
+
+            const restoreCard = `
+                    <div class="container restoreSection">
+                        <div class="card p-3 mb-3">          
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="mb-1 fw-semibold">Title: ${restoreArt.title}</p>
+                                    <small class="text-muted">Created: ${restoreArt.createdAt}</small>
+                                    <div class="mt-1">
+                                        ${
+                                            restoreArt.status === 'rejected' 
+                                                ? `<span class="badge-rejected">✕ Rejected</span>`  
+                                            : restoreArt.status === 'pending' 
+                                                ? `<span class="badge-pending">⏳ Pending</span>`
+                                                : ""
+                                        }
+                                    </div>
+                                </div>                          
+                                <div>
+                                    <button class="btn btn-danger rounded-pill restorSpecificArticle" data-id="${restoreArt.id}">Restore</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        `;
+                `;
 
-        restoreContainer.prepend(restoreCard);
-    });
+            restoreContainer.prepend(restoreCard);
+        });
+    }
+    catch (err) {
+        console.error(err);
+        Swal.fire({ icon: "error", title: "Could not load deleted articles." });
+    }
 }
 
 

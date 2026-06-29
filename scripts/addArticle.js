@@ -1,34 +1,34 @@
-
-// Display the date in the top
+// ── Date Setup ───────────────────────────────────────────────────────────────
 const today = new Date();
 const displayDate = today.toDateString();
 document.getElementById('created-date').textContent = 'Created: ' + displayDate;
 
-//  edit mode from URL  ?id=ARTICLE_ID
+// ── Edit Mode Detection (from URL ?id=ARTICLE_ID) ────────────────────────────
 const urlParams = new URLSearchParams(window.location.search);
 const editId = urlParams.get('id');
 const isEditMode = !!editId;
 
-let originalArticle = null; //  article in edit mode
+let originalArticle = null; // stores original article data in edit mode
 
-// edit mode 
+// ── Edit Mode Setup ──────────────────────────────────────────────────────────
 if (isEditMode) {
-    //  page title and header 
+
+    // update page title and header text
     document.title = 'Edit Article – InsightHub';
     const headingEl = document.querySelector('.header-heading');
     const subEl = document.querySelector('.header-sub');
     if (headingEl) headingEl.textContent = 'Edit Article';
     if (subEl) subEl.textContent = 'Update the details below and resubmit for review.';
 
-    //  submit -> edit 
+    // change submit button label to update
     const submitBtn = document.querySelector('.btn-submit');
     if (submitBtn) submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Update Article';
 
-    //created -> upadte date
+    // change date label to update date
     const date = document.getElementById('created-date');
     if (date) date.textContent = 'Update Date : ' + displayDate;
 
-    // Fetch the article 
+    // fetch the existing article and fill the form
     fetch(`${API}/articles/${editId}`)
         .then(res => {
             if (!res.ok) throw new Error('Article not found');
@@ -37,25 +37,22 @@ if (isEditMode) {
         .then(article => {
             originalArticle = article;
 
-            // fill all fields
+            // fill all form fields with existing article data
             document.getElementById('articleTitle').value    = article.title;
             document.getElementById('articleSubtitle').value = article.subtitle;
             document.getElementById('articleCategory').value = article.category;
             document.getElementById('articleIntro').value    = article.intro;
             document.getElementById('articleContent').value  = article.content;
 
-            //  heading and subtitle  cannot be edited
-            const titleInput    = document.getElementById('articleTitle');
-            const subtitleInput = document.getElementById('articleSubtitle');
-
-            titleInput.disabled    = true;
-            subtitleInput.disabled = true;
-
-            //  fields are locked
-            titleInput.style.opacity    = '0.6';
-            subtitleInput.style.opacity = '0.6';
-            // titleInput.title    = 'Heading cannot be changed after submission.';
-            // subtitleInput.title = 'Subtitle cannot be changed after submission.';
+            // show admin remark if available (from rejection)
+            if (article.remark) {
+                const dateEl = document.getElementById('created-date');
+                if (dateEl) dateEl.insertAdjacentHTML('afterend', `
+                    <div class="alert alert-warning mt-2 mb-0" style="font-size:0.85rem;">
+                        <i class="fa-solid fa-comment"></i> <strong>Admin Remark:</strong> ${article.remark}
+                    </div>
+                `);
+            }
         })
         .catch(err => {
             console.error(err);
@@ -64,39 +61,36 @@ if (isEditMode) {
         });
 }
 
-// ── Clear form (only useful in create mode) ─────────────────────────────────
+// ── Clear Form ───────────────────────────────────────────────────────────────
+// Resets all fields — in edit mode title/subtitle are preserved
 function clearForm() {
     Swal.fire({ title: 'Clear form?', text: 'All entered content will be removed.', icon: 'warning', showCancelButton: true })
         .then(result => {
             if (result.isConfirmed) {
-                const titleVal    = document.getElementById('articleTitle').value;
-                const subtitleVal = document.getElementById('articleSubtitle').value;
-
+            
                 document.getElementById('articleForm').reset();
                 document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
 
-                if (isEditMode) {
-                    document.getElementById('articleTitle').value    = titleVal;
-                    document.getElementById('articleSubtitle').value = subtitleVal;
-                }
             }
         });
 }
 
-// ── Validation helper ───────────────────────────────────────────────────────
+// ── Validation Helper ────────────────────────────────────────────────────────
+// Returns true if field has a value, false and marks invalid if empty
 function validate(id) {
     const element = document.getElementById(id);
-    if (element.disabled) return true;        // skip locked fields, count as valid
+    if (element.disabled) return true; // skip locked fields
 
     const empty = element.value.trim() === '';
     element.classList.toggle('is-invalid', empty);
-    return !empty;                             // now always in scope, always returns properly
+    return !empty;
 }
 
-// ── Form submit ─────────────────────────────────────────────────────────────
+// ── Form Submit ──────────────────────────────────────────────────────────────
 document.getElementById('articleForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
+    // check session
     const loggedUserStr = localStorage.getItem('loggedUser');
     if (!loggedUserStr) {
         Swal.fire({ icon: 'error', title: 'Session Expired', text: 'Please log in again.' });
@@ -104,6 +98,7 @@ document.getElementById('articleForm').addEventListener('submit', async function
     }
     const loggedUser = JSON.parse(loggedUserStr);
 
+    // validate all fields before submitting
     const ok = [
         validate('articleTitle'),
         validate('articleCategory'),
@@ -115,23 +110,47 @@ document.getElementById('articleForm').addEventListener('submit', async function
     if (!ok) return;
 
     try {
-        // ── EDIT MODE: PATCH existing article ──────────────────────────────
+
+        // ── EDIT MODE: PATCH existing article ────────────────────────────
         if (isEditMode) {
 
-             
-
             const updatedArticle = {
-                ...originalArticle,                                      // keep image, createdAt, authorId, etc.
-                category:  document.getElementById('articleCategory').value,
-                intro:     document.getElementById('articleIntro').value.trim(),
-                content:   document.getElementById('articleContent').value.trim(),
-                status:    'pending',                                    // reset to pending for re-review
+                ...originalArticle,                                         // keep image, authorId, authorName, createdAt etc.
+                title:      document.getElementById('articleTitle').value.trim(),
+                subtitle:   document.getElementById('articleSubtitle').value.trim(),
+                category:   document.getElementById('articleCategory').value,
+                intro:      document.getElementById('articleIntro').value.trim(),
+                content:    document.getElementById('articleContent').value.trim(),
+                status:     'pending',                                      // reset to pending for re-review
                 reviewDate: null,
-                updatedAt:  displayDate                                  // today's date auto-set
+                updatedAt:  displayDate                                     // today's date auto-set
             };
 
-            const submitBtn = document.querySelector('.btn-submit');
-            
+            // check if anything actually changed compared to original
+            const hasChanged =
+                updatedArticle.title    !== originalArticle.title    ||
+                updatedArticle.subtitle !== originalArticle.subtitle ||
+                updatedArticle.category !== originalArticle.category ||
+                updatedArticle.intro    !== originalArticle.intro    ||
+                updatedArticle.content  !== originalArticle.content;
+
+            // nothing changed — block update
+            if (!hasChanged) {
+                Swal.fire({ icon: 'info', title: 'No changes made', text: 'Nothing was updated.' });
+                return;
+            }
+
+            // something changed — ask for confirmation before saving
+            const confirm = await Swal.fire({
+                icon: 'question',
+                title: 'Update Article?',
+                text: 'Are you sure you want to resubmit this article for review?',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, Update'
+            });
+
+            if (!confirm.isConfirmed) return;
+
             const saveRes = await fetch(`${API}/articles/${editId}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
@@ -143,16 +162,17 @@ document.getElementById('articleForm').addEventListener('submit', async function
             Swal.fire({ icon: 'success', title: 'Article updated!', text: 'Resubmitted for review.' })
                 .then(() => { window.location.href = '../pages/authorDashboard.html'; });
 
-        // ── CREATE MODE───────────────────────────────────
-        } 
-        else {
+        // ── CREATE MODE: POST new article ────────────────────────────────
+        } else {
+
+            // count existing articles by this author to generate a unique image seed
             const countRes = await fetch(`${API}/articles?authorId=${loggedUser.id}`);
             const existingArticles = await countRes.json();
             const nextIndex = existingArticles.length + 1;
 
             const article = {
                 authorId:   loggedUser.id,
-                authorName : `${loggedUser.firstName} ${loggedUser.lastName}`,
+                authorName: `${loggedUser.firstName} ${loggedUser.lastName}`,
                 title:      document.getElementById('articleTitle').value.trim(),
                 category:   document.getElementById('articleCategory').value,
                 subtitle:   document.getElementById('articleSubtitle').value.trim(),
@@ -162,7 +182,7 @@ document.getElementById('articleForm').addEventListener('submit', async function
                 createdAt:  displayDate,
                 status:     'pending',
                 reviewDate: null,
-                isDeleted: null
+                isDeleted:  false
             };
 
             const saveRes = await fetch(`${API}/articles`, {
@@ -183,7 +203,8 @@ document.getElementById('articleForm').addEventListener('submit', async function
     }
 });
 
-// ── Remove validation highlight on user input ───────────────────────────────
+// ── Remove Validation Highlight on Input ─────────────────────────────────────
+// Clears red border as soon as user starts typing in any field
 document.querySelectorAll('.field-input, .field-select, .field-textarea').forEach(formElement => {
     formElement.addEventListener('input',  () => formElement.classList.remove('is-invalid'));
     formElement.addEventListener('change', () => formElement.classList.remove('is-invalid'));

@@ -123,11 +123,14 @@ function renderCards() {
                         <span class="card-meta-item">
                             <i class="fa-solid fa-calendar-days"></i> Updated: ${art.updatedAt}
                         </span>` : ''}
+                        
                         <span class="card-meta-item">
                             <i class="fa-solid fa-tag"></i> ${art.category.charAt(0).toUpperCase() + art.category.slice(1)}
                         </span>
+                       
                     </div>
                     ${footerRow}
+                     ${art.remark ?`<span class="card-meta-item"> Remark : ${art.remark} </span>` : ''}
                     ${actionButtons}
                 </div>
             </div>`;
