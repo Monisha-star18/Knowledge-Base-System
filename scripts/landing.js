@@ -41,6 +41,9 @@ function isDate(date, minYear, maxYear)
   return true
 }
 
+// let emailExists = false;
+// let userIdExists = false;
+
 $(document).ready(function()
 {
 
@@ -251,7 +254,7 @@ $(document).ready(function()
             const emailRes  = await fetch(`${API}/users?email=${email}`);
             const emailData = await emailRes.json();
             if (emailData.length > 0) {
-                emailExists = true;
+                // emailExists = true;
                 $("#s-email").removeClass("is-valid").addClass("is-invalid");
                 $("#sd-email").show().text("Email already registered");
                 Swal.fire({ icon: "error", title: "Email already registered" });
@@ -262,7 +265,7 @@ $(document).ready(function()
             const userIdRes  = await fetch(`${API}/users?userId=${userId}`);
             const userIdData = await userIdRes.json();
             if (userIdData.length > 0) {
-                userIdExists = true;
+                // userIdExists = true;
                 $("#s-userId").removeClass("is-valid").addClass("is-invalid");
                 $("#sd-userId").show().text("User ID already exists");
                 Swal.fire({ icon: "error", title: "User ID already exists" });
@@ -382,107 +385,5 @@ $(document).ready(function()
                 });
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 })
