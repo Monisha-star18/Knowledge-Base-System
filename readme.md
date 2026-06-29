@@ -320,41 +320,53 @@ Logout Clears Session
 Include screenshots of the following pages:
 
 * Landing Page
+  
   <img width="1920" height="1020" alt="{9C6D034B-4251-47BE-85D6-07196E1AF644}" src="https://github.com/user-attachments/assets/fbf3dd43-a81e-4459-8680-5aae02dd4ea0" />
 
 * Login Page
+  
   <img width="1920" height="1020" alt="{D857B5AD-602C-4C1D-8A8E-B3835F856518}" src="https://github.com/user-attachments/assets/364ec6fc-5cbf-4cfd-ad98-74971fd0f24f" />
 
 * Registration Page
+  
 <img width="1920" height="1020" alt="{A476FF1E-8FF6-4D60-AE45-477973EE526F}" src="https://github.com/user-attachments/assets/484220d9-15c4-436e-9083-b895e18f7964" />
 
 * Reader Dashboard
+  
 <img width="1920" height="1020" alt="{DFF44895-AC26-4FC0-8E1F-C3B7BB55D230}" src="https://github.com/user-attachments/assets/cd871ed0-1e96-4404-bf04-9cfe441dbed6" />
 
 * Author Dashboard
+  
 <img width="1920" height="1020" alt="{6F1DA330-894E-4A39-ABA3-E86371F1DD0A}" src="https://github.com/user-attachments/assets/be7f3f33-9170-4e3a-b351-4dc98fc8fd6f" />
 
 * Admin Dashboard
+  
 <img width="1920" height="1020" alt="{61C38ECB-2D4A-46BC-9E1B-CDA25E557E84}" src="https://github.com/user-attachments/assets/def9ff5b-d5ed-4b1d-b6b7-2431b560aba1" />
 
 * Add Article Page
+  
   <img width="1920" height="1020" alt="{E9293D98-1542-4083-A812-3B9EB65912E4}" src="https://github.com/user-attachments/assets/8d170ecd-a343-4bc4-ad0b-e2e095add060" />
 
 * Edit Article Page
+  
   <img width="1920" height="1020" alt="{BA23EABF-E9D6-4A5C-80EF-3C1FA047F927}" src="https://github.com/user-attachments/assets/d4875358-68d1-49b4-a02a-71ccc3207fb6" />
 
 * Restore Article Page
+  
   <img width="1920" height="1020" alt="{86D19F9A-12D9-4A55-A9EB-5CC87E8B5160}" src="https://github.com/user-attachments/assets/334937ed-3dcb-4048-8b69-e9c0d8bbe1c5" />
 
 
 * Read Article Page
+  
   <img width="1920" height="1020" alt="{B4D235B0-C509-42E0-9843-8E657433D4C3}" src="https://github.com/user-attachments/assets/dcb5505c-0ac2-48da-a19d-0d3cbed2844e" />
 
 
 * Profile Page
+  
 <img width="1920" height="1020" alt="{EC9D4C81-C842-44BA-B8A7-AF2C8AC20802}" src="https://github.com/user-attachments/assets/f4f20547-7039-4e7b-adc6-14e5469e35da" />
 
 * Review Modal
+  
 <img width="1920" height="1020" alt="{2A7A2D04-353B-4B5C-94F9-38F932B31500}" src="https://github.com/user-attachments/assets/fcbd1670-6990-4b67-92f6-3191fab5bd4f" />
 
 <img width="1920" height="1020" alt="{9F0DB781-D6E9-45C4-A4E7-4FCF823BE2FD}" src="https://github.com/user-attachments/assets/e4491ec9-fdc6-4f72-a726-c63046c9da8a" />
