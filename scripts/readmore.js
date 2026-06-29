@@ -1,8 +1,5 @@
-
-
-$(document).ready(async function () {
-
-    
+$(document).ready(async function () 
+{
     // Setup profile offcanvas
     const userData = localStorage.getItem("loggedUser");
     if (!userData) { window.location.href = "../pages/index.html"; return; }
@@ -13,13 +10,14 @@ $(document).ready(async function () {
     const params = new URLSearchParams(window.location.search);
     const articleId = params.get("id");
 
-    if (!articleId) {
-        $("#article-loading").hide();
+    if (!articleId) 
+    {
         $("#article-error").show();
         return;
     }
 
-    try {
+    try 
+    {
         const res = await fetch(`${API}/articles/${articleId}`);
         if (!res.ok) throw new Error("Not found");
         const art = await res.json();
@@ -42,26 +40,24 @@ $(document).ready(async function () {
                 .join("")
         );
 
-        $("#article-loading").hide();
         $("#article-content").show();
 
-        if (art.views === 100 || art.views === 1) {
-        confetti({
-            particleCount: 500,   // number of pieces
-            spread: 90,           // how wide it fans out
-            origin: { y: 0.6 },  // where it fires from (0=top, 1=bottom)
-            colors: ["#360ae8", "#c70874", "#ffffff"] // your brand colors
-        });
+        //for 1st and 100th user 
+        if (art.views === 100 || art.views === 1) 
+        {
+            confetti({
+                particleCount: 500,   // number of pieces
+                spread: 90,           // how wide it fans out
+                origin: { y: 0.6 },  // where it fires from (0=top, 1=bottom)
+                colors: ["#360ae8", "#c70874", "#ffffff"] // your brand colors
+            });
         }
-        
     } 
     
-    catch (err) {
+    catch (err) 
+    {
         console.error(err);
-        $("#article-loading").hide();
         $("#article-error").show();
     }
-
     
-
 });

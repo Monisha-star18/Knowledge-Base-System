@@ -8,7 +8,8 @@ $(document).ready(async function ()
     const userData = localStorage.getItem("loggedUser"); // store logged-in user from localStorage
 
     // redirect to home if  user session  not found
-    if (!userData) {
+    if (!userData) 
+    {
         window.location.href = "../pages/index.html";
         return;
     }
@@ -20,14 +21,14 @@ $(document).ready(async function ()
     await fetchAndRenderArticles(); // Fetch articles from API and render cards
 
     // Search call render cards on input
-    $("#searchInput").on("input", function () {
-        renderCards();
-    });
+    $("#searchInput").on("input", function () { renderCards(); });
 });
 
 
-async function fetchAndRenderArticles() {
-    try {
+async function fetchAndRenderArticles() 
+{
+    try 
+    {
         $("#cards-container").html(`<div class="text-center text-muted my-5 w-100">Loading articles...</div>`);
 
         // Fetches only approved, non-deleted articles from the DB
@@ -37,7 +38,9 @@ async function fetchAndRenderArticles() {
         localArticles = await res.json();
         renderCards();
 
-    } catch (err) {
+    } 
+    catch (err) 
+    {
         console.error(err);
         Swal.fire({ icon: "error", title: "Error loading dashboard feed." });
     }
@@ -45,7 +48,8 @@ async function fetchAndRenderArticles() {
 
 
 // Filters localArticles by search input and renders article cards
-function renderCards() {
+function renderCards() 
+{
     const container = $("#cards-container");
     container.empty();
 
@@ -60,13 +64,15 @@ function renderCards() {
     });
 
     // Show message if no results match
-    if (filtered.length === 0) {
+    if (filtered.length === 0) 
+    {
         container.append(`<div class="text-center text-muted my-5 w-100">No articles found matching the criteria.</div>`);
         return;
     }
 
     // card for each article
-    filtered.forEach(art => {
+    filtered.forEach(art => 
+    {
         const cardHtml = `
             <div class="article-card">
                 <div class="card-img-wrap">
@@ -100,17 +106,17 @@ function renderCards() {
         container.prepend(cardHtml);
     });
 
-        // Read More button → navigate to readmore page with article ID
+    // navigate to readmore page with article ID
     $(document).on("click", ".btn-card-read", async function () 
     {
         const articleId = $(this).data("id");
 
-        try {
-            // Get current views
+        try 
+        {
             const res = await fetch(`${API}/articles/${articleId}`);
             const art = await res.json();
 
-            // Patch views + 1
+            //  views + 1
             await fetch(`${API}/articles/${articleId}`, {
                 method: "PATCH",
                 headers: { "Content-Type": "application/json" },
@@ -119,9 +125,11 @@ function renderCards() {
             
             await fetchAndRenderArticles();
 
-        } catch (err) {
+        } 
+        
+        catch (err) 
+        {
             console.error("Failed to update views:", err);
-            // Don't block navigation even if patch fails
         }
         
         window.location.href = `readmore.html?id=${articleId}`;

@@ -11,11 +11,12 @@ $(document).ready(async function () {
 
    setupProfile(loggedUser); 
 
-    // 3. Initial fetch and render
+    // fetch and render
     await fetchAndRenderArticles();
 
-    // 4. Setup Filters
-    $("#filters .btn").on("click", function () {
+    // Filters
+    $("#filters .btn").on("click", function () 
+    {
         $("#filters .btn").removeClass("active");
         $(this).addClass("active");
 
@@ -28,35 +29,38 @@ $(document).ready(async function () {
         renderCards();
     });
 
-    // 5. Setup Search
-    $("#searchInput").on("input", function () {
-        renderCards();
-    });
+    //  Search
+    $("#searchInput").on("input", function () {renderCards();});
 });
 
 
 
 // Fetch articles written by this specific author
-async function fetchAndRenderArticles() {
-    try {
+async function fetchAndRenderArticles() 
+{
+    try 
+    {
         const res = await fetch(`${API}/articles?authorId=${loggedUser.id}&isDeleted=false`);
         if (!res.ok) throw new Error("Failed to load articles");
         localArticles = await res.json();
         renderCards();
-    } catch (err) {
+    } 
+    catch (err) 
+    {
         console.error(err);
         Swal.fire({ icon: "error", title: "Error loading dashboard feed." });
     }
 }
 
 // Dynamically generate layout cards based on filter and search rules
-function renderCards() {
+function renderCards() 
+{
     const container = $("#cards-container");
     container.empty();
 
     const searchVal = $("#searchInput").val().toLowerCase().trim();
 
-    // Filter array
+    // Filter 
     let filtered = localArticles.filter(art => {
         const matchesFilter = (currentFilter === "all" || art.status === currentFilter);
         const matchesSearch = art.title.toLowerCase().includes(searchVal) || 
@@ -71,16 +75,20 @@ function renderCards() {
     }
 
     // Loop & append items
-    filtered.forEach(art => {
+    filtered.forEach(art => 
+    {
         let statusBadge = "";
         let footerRow = "";
         let actionButtons = "";
 
-        if (art.status === "approved") {
+        if (art.status === "approved") 
+        {
             statusBadge = `<span class="badge-approved">✓ Approved</span>`;
             footerRow = `<div class="card-date-row approved"><i class="fa-solid fa-circle-check"></i> Approved on: ${art.reviewDate}</div>`;
             
-        } else if (art.status === "rejected") {
+        } 
+        else if (art.status === "rejected") 
+        {
             statusBadge = `<span class="badge-rejected">✕ Rejected</span>`;
             footerRow = `<div class="card-date-row rejected"><i class="fa-solid fa-circle-xmark"></i> Rejected on: ${art.reviewDate}</div>`;
             actionButtons = `
@@ -92,7 +100,9 @@ function renderCards() {
                         <i class="fa-solid fa-trash"></i> Delete
                     </button>
                 </div>`;
-        } else {
+        } 
+        else 
+        {
             statusBadge = `<span class="badge-pending">⏳ Pending</span>`;
             footerRow = `<div class="card-date-row"><i class="fa-regular fa-clock"></i> Awaiting review</div>`;
             actionButtons = `
@@ -136,6 +146,7 @@ function renderCards() {
                     ${actionButtons}
                 </div>
             </div>`;
+
         container.prepend(cardHtml);
     });
 }
@@ -144,8 +155,10 @@ function renderCards() {
 async function deleteArticle(id) 
 {
     Swal.fire({ title: 'Delete Article?', text: 'This article will be removed from your dashboard.', icon: 'warning', showCancelButton: true })
-        .then(async result => {
-            if (result.isConfirmed) {
+        .then(async result => 
+        {
+            if (result.isConfirmed) 
+            {
                 await fetch(`${API}/articles/${id}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
@@ -156,10 +169,11 @@ async function deleteArticle(id)
         });
 }
 
-//restore 
-async function restoreArticle() {
-
-    try{
+//main restore function work on the restore btn cilcked on page 
+async function restoreArticle() 
+{
+    try
+    {
         const restoreContainer = $("#restoreModal-content");
         restoreContainer.empty();
 
@@ -169,13 +183,10 @@ async function restoreArticle() {
 
         if (localRestoreArticles.length === 0) 
         {
-                restoreContainer.append(`<div class="text-center text-muted my-4">No deleted articles to restore.</div>`);
-                return;
+            restoreContainer.append(`<div class="text-center text-muted my-4">No deleted articles to restore.</div>`);
+            return;
         }
 
-    
-    
-    
         localRestoreArticles.forEach(restoreArt => 
         {
 
@@ -207,18 +218,23 @@ async function restoreArticle() {
             restoreContainer.prepend(restoreCard);
         });
     }
-    catch (err) {
+    catch (err) 
+    {
         console.error(err);
         Swal.fire({ icon: "error", title: "Could not load deleted articles." });
     }
 }
 
+//individuall restore function work on the restore btn cilcked on for particular card 
 
-$(document).on("click", ".restorSpecificArticle",  function() {
+$(document).on("click", ".restorSpecificArticle",  function() 
+{
     const restoreId = $(this).data("id");
     Swal.fire({ title: 'Restore Article?', text: 'This article will be restored.', showCancelButton: true })
-        .then(async result => {
-            if (result.isConfirmed) {
+        .then(async result => 
+        {
+            if (result.isConfirmed)
+            {
                 await fetch(`${API}/articles/${restoreId}`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
@@ -228,20 +244,5 @@ $(document).on("click", ".restorSpecificArticle",  function() {
                 await fetchAndRenderArticles();
             }
         });
-    
 });
-
-
-// Logout execution 
-function handleLogout()
-{
-    Swal.fire({title: 'LogOut',text:'Do you want to Log out',icon: 'warning',showCancelButton: true})
-        .then(result => 
-        {
-            if (result.isConfirmed) {
-                localStorage.removeItem("loggedUser");
-                window.location.href = "../pages/index.html";
-            }
-        });
-}
 

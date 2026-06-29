@@ -1,11 +1,9 @@
-// import { API } from "./config.js";
-// const API = "http://localhost:3000";
-
 let loggedUser = null;
 let localArticles = []; 
 let currentFilter = "all";
 
-$(document).ready(async function () {
+$(document).ready(async function () 
+{
 
     // take the login user data 
     const userData = localStorage.getItem("loggedUser");
@@ -15,11 +13,12 @@ $(document).ready(async function () {
     setupProfile(loggedUser); 
     
 
-    // 3. Initial fetch and render
+    // Initial fetch and render
     await fetchAndRenderArticles();
 
-    // 4. Setup Filters
-    $("#filters .btn").on("click", function () {
+    //  Filters
+    $("#filters .btn").on("click", function () 
+    {
         $("#filters .btn").removeClass("active");
         $(this).addClass("active");
 
@@ -32,7 +31,7 @@ $(document).ready(async function () {
         renderCards();
     });
 
-    // 5. Setup Search
+    //  Search
     $("#searchInput").on("input", function () {
         renderCards();
     });
@@ -40,15 +39,19 @@ $(document).ready(async function () {
 
 
 
-// Fetch articles written by this specific author
-async function fetchAndRenderArticles() {
-    try {
+// Fetch articles written in specific category
+async function fetchAndRenderArticles()
+{
+    try 
+    {
         const res = await fetch(`${API}/articles?category=${loggedUser.category}&isDeleted=false`);
         if (!res.ok) throw new Error("Failed to load articles");
         localArticles = await res.json();
         renderCards();
         
-    } catch (err) {
+    } 
+    catch (err) 
+    {
         console.error(err);
         Swal.fire({ icon: "error", title: "Error loading dashboard feed." });
     }
@@ -61,14 +64,13 @@ function renderCards() {
 
     const searchVal = $("#searchInput").val().toLowerCase().trim();
 
-    // Filter array
+    // Filter 
     let filtered = localArticles.filter(art => {
-        const notDeleted  = !art.isDeleted
         const matchesFilter = (currentFilter === "all" || art.status === currentFilter);
         const matchesSearch = art.title.toLowerCase().includes(searchVal) || 
                               art.subtitle.toLowerCase().includes(searchVal) || 
                               art.category.toLowerCase().includes(searchVal);
-        return notDeleted && matchesFilter && matchesSearch;
+        return matchesFilter && matchesSearch;
     });
 
     if (filtered.length === 0) {
@@ -140,10 +142,8 @@ function renderCards() {
 
 
 
-// ── Review Modal ─────────────────────────────────────────────────────────────
-// Uses the #reviewModal already present in the HTML (Bootstrap modal)
+// ── Review Modal 
 
-// Helper: open the Bootstrap modal and return a Promise that resolves with the remark or null
 function openReviewModal(isAccept) {
     return new Promise((resolve) => {
         const modal      = new bootstrap.Modal(document.getElementById("reviewModal"));
@@ -167,27 +167,25 @@ function openReviewModal(isAccept) {
         // Show the modal
         modal.show();
 
-        // ── Clear error as soon as the user starts typing ────────────
+        // ── Clear error on input
         remark.on("input.review", function () {
             if ($(this).val().trim()) error.addClass("d-none");
         });
 
-        // ── Confirm handler ──────────────────────────────────────────
-        // Use .on() (not .one()) so it survives failed validation clicks
+        // ── Confirm handler 
         confirmBtn.on("click.review", function () {
             const val = remark.val().trim();
             if (!val) {
                 error.removeClass("d-none");
                 remark.trigger("focus");
-                return; // keep handler alive for next attempt
+                return; 
             }
             cleanup();
             modal.hide();
             resolve(val);
         });
 
-        // ── Cancel / close handler ───────────────────────────────────
-        // Fires when Bootstrap fully hides the modal (X button, Cancel, backdrop click, Escape)
+        // close handler 
         $("#reviewModal").one("hidden.bs.modal", function () {
             cleanup();
             resolve(null);
@@ -202,7 +200,8 @@ function openReviewModal(isAccept) {
 }
 
 // Event delegation for Accept / Reject buttons (works with dynamically rendered cards)
-$(document).on("click", ".btn-card-accept, .btn-card-reject", async function () {
+$(document).on("click", ".btn-card-accept, .btn-card-reject", async function () 
+{
     const articleId  = $(this).data("id");
     const isAccept   = $(this).hasClass("btn-card-accept");
     const action     = isAccept ? "approved" : "rejected";
@@ -210,17 +209,13 @@ $(document).on("click", ".btn-card-accept, .btn-card-reject", async function () 
     const remark = await openReviewModal(isAccept);
     if (!remark) return; // user cancelled
 
-    try {
+    try 
+    {
         const reviewDate = new Date().toLocaleDateString();
         const res = await fetch(`${API}/articles/${articleId}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                status: action,
-                remark,
-                reviewDate,
-                reviewedBy: loggedUser.userId
-            })
+            body: JSON.stringify({status: action,remark,reviewDate,reviewedBy: loggedUser.userId})
         });
 
         if (!res.ok) throw new Error("Failed to update article status.");
@@ -235,7 +230,9 @@ $(document).on("click", ".btn-card-accept, .btn-card-reject", async function () 
 
         renderCards();
 
-    } catch (err) {
+    } 
+    catch (err) 
+    {
         console.error(err);
         alert("Update failed: " + err.message);
     }

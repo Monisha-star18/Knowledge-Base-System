@@ -1,6 +1,5 @@
 // function connect to the clean button in the sigup model 
 //used to clear the form 
-
 function clearSignUpForm() 
 {
 
@@ -13,12 +12,13 @@ function clearSignUpForm()
         .hide().text("");
 }
 
+// function connect to the clean button in the login model 
+//used to clear the form 
 function clearLoginForm()
 {
     $("#l-userId,#l-password").val("").removeClass("is-valid is-invalid");
     $("#ld-userId").hide().text("");
 }
-
 
 
 // regex 
@@ -27,7 +27,8 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
 const dateRegex = /^(\d{4})-(\d{2})-(\d{2})$/
 
-//function that dont allow empty date and allow only
+
+//function that dont allow empty date and allow only valid date
 function isDate(date, minYear, maxYear) 
 {
   if (!date) return false; 
@@ -41,12 +42,9 @@ function isDate(date, minYear, maxYear)
   return true
 }
 
-// let emailExists = false;
-// let userIdExists = false;
 
 $(document).ready(function()
 {
-
     // validateInput is a general  function used to validation  
     function validateInput(element, desc, regex, emptyMsg, invalidMsg)
     {
@@ -68,7 +66,7 @@ $(document).ready(function()
         return true;
     }
 
-    //----------------sigup validation --------------------------
+    //sigup validation 
     //firstname
     $("#s-firstName").on('input',function()
     {
@@ -117,7 +115,6 @@ $(document).ready(function()
         }, 500);
     });
     
-
 
     //date using the isdate function mention at top 
     $("#s-dateOfBirth").on("change", function ()
@@ -199,6 +196,7 @@ $(document).ready(function()
         return true;
     }
 
+    // on register
     $("#register").on("click", async function (e) 
     {
         e.preventDefault();
@@ -225,21 +223,19 @@ $(document).ready(function()
             $("#sd-dateOfBirth").show().text("Please enter a valid Date of Birth");
         }
                 
-
         // Run all field validations
         const allValid = [
-            validateInput("#s-firstName","#sd-firstname", nameRegex,"First Name is required","First Name should be 3–50 letters"),
-            validateInput("#s-lastName",     "#sd-lastName",         nameRegex,     "Last Name is required",    "Last Name should be 3–50 letters"),
-            validateInput("#s-email",           "#sd-email",            emailRegex,    "Email is required",        "Enter a valid email address"),
-            validateInput("#s-password",       "#sd-password",         passwordRegex, "Password is required",     "8–15 chars with uppercase, lowercase, digit and special character"),
-            validateInput("#s-role",            "#sd-role",             null,          "Please select a role"),
-            validateInput("#s-bio",             "#sd-bio",              null,          "Bio is required"),
+            validateInput("#s-firstName","#sd-firstname",nameRegex,"First Name is required","First Name should be 3–50 letters"),
+            validateInput("#s-lastName", "#sd-lastName", nameRegex,"Last Name is required","Last Name should be 3–50 letters"),
+            validateInput("#s-email", "#sd-email", emailRegex, "Email is required",  "Enter a valid email address"),
+            validateInput("#s-password","#sd-password", passwordRegex, "Password is required", "8–15 chars with uppercase, lowercase, digit and special character"),
+            validateInput("#s-role", "#sd-role",  null,  "Please select a role"),
+            validateInput("#s-bio", "#sd-bio", null, "Bio is required"),
             validateInput("#s-userId","#sd-userId",null,"User ID is required"),
             validateConfirmPassword(),
             isGenderSelected(),
             isDate($("#s-dateOfBirth").val(), 1946, 2008)
         ];
-
 
         if (allValid.includes(false)) {
             Swal.fire({ icon: "warning", title: "Please fill all fields correctly" });
@@ -249,11 +245,14 @@ $(document).ready(function()
         const email  = $("#s-email").val().trim();
         const userId = $("#s-userId").val().trim();
 
-        try {
+        try 
+        {
             // Check email duplicate
             const emailRes  = await fetch(`${API}/users?email=${email}`);
             const emailData = await emailRes.json();
-            if (emailData.length > 0) {
+
+            if (emailData.length > 0) 
+            {
                 // emailExists = true;
                 $("#s-email").removeClass("is-valid").addClass("is-invalid");
                 $("#sd-email").show().text("Email already registered");
@@ -264,7 +263,9 @@ $(document).ready(function()
             // Check userId duplicate
             const userIdRes  = await fetch(`${API}/users?userId=${userId}`);
             const userIdData = await userIdRes.json();
-            if (userIdData.length > 0) {
+
+            if (userIdData.length > 0) 
+            {
                 // userIdExists = true;
                 $("#s-userId").removeClass("is-valid").addClass("is-invalid");
                 $("#sd-userId").show().text("User ID already exists");
@@ -308,15 +309,14 @@ $(document).ready(function()
                 });
 
 
-        } catch (err) {
-            // console.error("Sign-up error:", err);
+        } 
+        catch (err) 
+        {
             Swal.fire({ icon: "error", title: "Cannot connect to server", text: "Please try again later." });
         }
     });
 
-        //----------------login validation --------------------------
-
-
+        //login validation 
         $("#loginBtn").on("click", async function (e)
         {
             e.preventDefault();
@@ -326,10 +326,7 @@ $(document).ready(function()
 
             if (!userId || !password)
             {
-                Swal.fire({
-                    icon: "warning",
-                    title: "Please enter User ID and Password"
-                });
+                Swal.fire({icon: "warning",title: "Please enter User ID and Password"});
                 return;
             }
 
@@ -379,10 +376,7 @@ $(document).ready(function()
             }
             catch (err)
             {
-                console.error("Login error:", err);
-
-                Swal.fire({icon: "error",title: "Cannot connect to server"
-                });
+                Swal.fire({icon: "error",title: "Cannot connect to server"});
             }
         });
         

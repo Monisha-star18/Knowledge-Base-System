@@ -1,7 +1,9 @@
+// Base URL of the JSON Server API.
 const API = "http://localhost:3000";
 
-
-function setupProfile(loggedUser) {
+// Populates the user profile information on the page.
+function setupProfile(loggedUser) 
+{
     const fullName = `${loggedUser.firstName} ${loggedUser.lastName}`;
     $("#nav-username").text(fullName);
     $("#Name").text(fullName);
@@ -14,10 +16,13 @@ function setupProfile(loggedUser) {
     $("#Joined").text(new Date(loggedUser.createdDate).toLocaleDateString());
 }
 
-function handleLogout() {
+// Displays a logout confirmation dialog.
+function handleLogout() 
+{
     Swal.fire({ title: 'LogOut', text: 'Do you want to Log out', icon: 'warning', showCancelButton: true })
         .then(result => {
-            if (result.isConfirmed) {
+            if (result.isConfirmed) 
+            {
                 localStorage.removeItem("loggedUser");
                 window.location.href = "../pages/index.html";
             }
