@@ -160,7 +160,8 @@
       "isDeleted": false,
       "updatedAt": "Sat Jun 27 2026",
       "remark": "good",
-      "reviewedBy": "MON1235"
+      "reviewedBy": "MON1235",
+      "views": 2
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -191,7 +192,8 @@
       "status": "approved",
       "id": "beEvb5JEHqg",
       "isDeleted": false,
-      "reviewDate": "26 Jun 2026"
+      "reviewDate": "26 Jun 2026",
+      "views": 1
     },
     {
       "authorId": "1vEHgs8MIS4",
@@ -209,7 +211,8 @@
       "isDeleted": false,
       "updatedAt": "Fri Jun 26 2026",
       "remark": "good",
-      "reviewedBy": "MON1235"
+      "reviewedBy": "MON1235",
+      "views": 6
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -132,3 +132,14 @@ p.sub {
     border-top: 1px solid #F1F5F9;
     display: flex; gap: 0.5rem;
 }
+
+
+.card-read {
+    flex: 1; background: #FFF1F2;
+    color: #E11D48; border: none;
+    border-radius: 7px; font-size: 0.8rem; font-weight: 600;
+    padding: 0.38rem 0; cursor: pointer;
+    transition: background 0.15s;
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.card-read:hover { background: #FFE4E6; }

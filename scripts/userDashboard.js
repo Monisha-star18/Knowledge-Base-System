@@ -87,8 +87,42 @@ function renderCards() {
                             <i class="fa-solid fa-tag"></i> ${art.category.charAt(0).toUpperCase() + art.category.slice(1)}
                         </span>
                     </div>
-                </div>
-            </div>`;
+
+                    <div class="card-actions d-flex gap-5 align-item-center">
+                        <button class="btn-card-read btn btn-success" data-id="${art.id}">
+                            <i class="fa-solid fa-book-open"></i> Read More
+                        </button>
+                        <div class="card-views">
+                            <i class="fa-solid fa-eye"></i> ${art.views || 0} views
+                        </div>
+                    </div>
+                </div>`;
         container.prepend(cardHtml);
     });
+
+        // Read More button → navigate to readmore page with article ID
+    $(document).on("click", ".btn-card-read", async function () 
+    {
+        const articleId = $(this).data("id");
+
+        try {
+            // Get current views
+            const res = await fetch(`${API}/articles/${articleId}`);
+            const art = await res.json();
+
+            // Patch views + 1
+            await fetch(`${API}/articles/${articleId}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ views: (art.views || 0) + 1 })
+            });
+
+        } catch (err) {
+            console.error("Failed to update views:", err);
+            // Don't block navigation even if patch fails
+        }
+
+        window.location.href = `readmore.html?id=${articleId}`;
+    });
 }
+

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Dashboard – InsightHub</title>
+    <link rel="icon" type="image/svg+xml" href="../asserts/images/svg/readme-brands-solid-full.svg">
+
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- external css file -->
+    <link href="../styles/theme.css" rel="stylesheet">
+    <link href="../styles/readmore.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container d-flex align-items-center">
+            
+            <!-- navbar Logo -->
+            <a class="navbar-brand" href="#">
+                <i class="fa-brands fa-readme"></i>
+                InsightHub
+            </a>
+
+            <!-- humburger button  -->
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- navbar menu -->
+            <div class="collapse navbar-collapse" id="navbarMenu">
+                <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
+                    <!-- username -->
+                    <li class="nav-item">
+                        <span class="nav-username" id="nav-username" style="color:#94A3B8; font-size:0.88rem;">—</span>
+                    </li>
+
+                    <!-- usericon -->
+                    <li class="nav-item">
+                        <button class="btn btn-icon" data-bs-toggle="offcanvas" data-bs-target="#userOffcanvas" title="Profile" id="Profile" style="background:none;border:none;">
+                            <i class="fa-solid fa-circle-user" style="font-size:26px; color:#94A3B8;" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Offcanvas to diaply user deatils -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="userOffcanvas" aria-labelledby="userOffcanvasLabel">
+        
+        <!-- canvas heading -->
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="userOffcanvasLabel">
+                <i class="fa-solid fa-circle-user me-2"></i>User Profile
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+        <!-- canvas body -->
+        <div class="offcanvas-body">
+
+            <!-- Profile Header -->
+            <div class="text-center mb-4">
+                <i class="fa-solid fa-circle-user display-1 text-secondary"></i>
+                <h4 class="mt-3 mb-1" id="Name"></h4>
+                <div class="d-flex justify-content-center gap-2">
+                    <span class="badge text-bg-primary" id="Role"></span>
+                    <span class="badge text-bg-secondary" id="UserId"></span>  
+                </div>
+                <button class="btn btn-danger w-100 logout my-3" onclick="handleLogout()">Logout</button>
+            </div>
+
+            <hr>
+
+            <!-- Bio -->
+            <div class="mb-4">
+                <div class="d-flex align-items-start gap-2">
+                    <i class="fa-solid fa-pen-to-square mt-1 text-primary"></i>
+                    <p class="mb-0 text-secondary" id="Bio"></p>
+                </div>
+            </div>
+
+            <hr>
+
+            <!-- Details -->
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <i class="fa-solid fa-envelope text-primary"></i>
+                <span id="Email"></span>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <i class="fa-solid fa-cake-candles text-primary"></i>
+                <span id="Dob"></span>
+            </div>
+
+            <div class="d-flex align-items-center gap-3 mb-3">
+                <i class="fa-solid fa-venus-mars text-primary"></i>
+                <span id="Gender"></span>
+            </div>
+
+            <div class="d-flex align-items-center gap-3">
+                <i class="fa-solid fa-calendar-days text-primary"></i>
+                <span id="Joined"></span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- page -->
+    <div class="container">
+
+        <!-- header row -->
+        <div class="row top-row">
+            <div class="col-6">
+                <h1 class="title mt-4">Welcome to InsightHub</h1>
+                <p class="sub" id="sub-title">Manage you curiosity</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        
+        
+        <!-- Article Content -->
+        <div class="container article-wrap">
+
+            <!-- Back button -->
+            <button class="btn-back" onclick="history.back()">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+
+            <!-- Loading state -->
+            <div id="article-loading" class="text-center text-muted my-5">Loading article...</div>
+
+            <!-- Article body (hidden until loaded) -->
+            <div id="article-content" style="display:none;">
+
+                <!-- Hero image -->
+                <div class="article-hero">
+                    <img id="art-image" src="" alt="Article cover" class="article-hero-img">
+                    <div class="article-hero-overlay">
+                        <span id="art-category" class="art-category-badge"></span>
+                    </div>
+                </div>
+
+                <!-- Title & meta -->
+                <div class="article-header">
+                    <h1 id="art-title" class="article-title"></h1>
+                    <p id="art-subtitle" class="article-subtitle"></p>
+
+                    <div class="article-meta">
+                        <span><i class="fa-solid fa-pen"></i> <span id="art-author"></span></span>
+                        <span><i class="fa-solid fa-calendar-days"></i> <span id="art-date"></span></span>
+                    </div>
+                </div>
+
+                <div class="article-divider"></div>
+
+                <!-- Intro -->
+                <div class="article-intro" id="art-intro"></div>
+
+                <!-- Main content -->
+                <div class="article-body" id="art-content"></div>
+
+            </div>
+
+            <!-- Not found state -->
+            <div id="article-error" style="display:none;" class="text-center text-muted my-5">
+                Article not found.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- external script file -->
+    <script src="../scripts/shared.js"></script>
+    <script  src="../scripts/readmore.js"></script>
+
+</body>
+</html>
