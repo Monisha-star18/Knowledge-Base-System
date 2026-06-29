@@ -1,31 +1,26 @@
 
 /* navbar */
-/* ----------------------------------------------------------------- */
 .navbar{background-color: var(--nav-bg);border-bottom: 1px solid #f0ede8;}
 
 /* navbard*/
 .navbar-brand{color: #E8440A}
 
 /* nablink */
-.nav-link button:hover
+.nav-link:hover
 {
     color: var(--color-primary-dark);
     border: 1px solid var(--color-primary-dark) !important;
-    /* background-color: var(--grad-card-b) !important; */
 }
-/* ----------------------------------------------------------------- */
 
 /* landing page */
-/* ----------------------------------------------------------------- */
+
 .landing{background: var(--background);}
 .landing-content { color: var(--white-text);}
-.tag-line {color: var(--color-primary);}
 
 #connect{ background: var(--background);}
 
 footer{background-color: var(--color-primary); color: var(--white-text);}
 
-.about-para{color: var(--color-primary);}
 
 .landing-svg{
     width: 100%;
@@ -107,22 +102,4 @@ html {
 .star-rating .filled {color: gold; }
 .star-rating .empty {color: #ccc;}
 
-/* 
-.aboutTop-sub, .about-sub,.card-title,.card-text{font-family: 'Segoe UI', system-ui, sans-serif;}
-
-.aboutTop-sub
-{
-    font-size: 0.72rem;letter-spacing: 0.2em;color: #E8440A;
-    text-transform: uppercase;font-weight: 700;
-}
-
- .about-heading 
- {
-    font-family: gt-super, Georgia, Cambria, "Times New Roman", Times, serif;
-    font-size: 2.6rem;font-weight: 700;
-    line-height: 1.1;
-    color: #b05a2f;
-  }
-
-.about-sub {font-size: 0.97rem;line-height: 1.7;} */
 

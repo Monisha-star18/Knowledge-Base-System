@@ -13,10 +13,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-
     <!-- external css file -->
-     <link href="../styles/landing.css" rel="stylesheet">
-     <link href="../styles/theme.css" rel="stylesheet">
+    <link href="../styles/landing.css" rel="stylesheet">
+    <link href="../styles/theme.css" rel="stylesheet">
 </head>
 <body>
 
@@ -24,41 +23,47 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container d-flex align-items-center">
 
-            <!-- navbar Logo/brand -->
+            <!-- navbar Logo -->
             <a class="navbar-brand" href="#">
-                <i class="fa-brands fa-readme text-drak"></i>
+                <i class="fa-brands fa-readme"></i>
                 InsightHub
             </a>
 
-            <!-- humburger button on collapse  -->
+            <!-- humburger button  -->
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
                 <i class="fas fa-bars"></i> 
             </button>
 
-            <!-- navbar links/menu -->
+            <!-- navbar menu -->
             <div class="collapse navbar-collapse " id="navbarMenu">
                 <ul class="navbar-nav ms-auto d-flex justify-content-between align-items-center ">
                     
-                    <li class="nav-item">
-                        <a class="nav-link" href="#featuredArticles">
-                            <button class="btn nav-btn">Featured articles</button>
+                    <!-- nav item -1 Featured articles  -->
+                    <li class="nav-item p-2">
+                        <a class="nav-link btn " href="#featuredArticles">
+                           Featured articles
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#connect">
-                            <button class="btn nav-btn">Connect Us Through</button>
+
+                    <!-- nav item -2 Connect  -->
+                    <li class="nav-item p-2">
+                        <a class="nav-link btn" href="#connect">
+                            Connect Us Through
                         </a>
                     </li>
                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <button class="btn nav-btn" data-bs-toggle="modal" data-bs-target="#signUpModal">Sign Up</button>
-                        </a>
+                    <!-- nav item -3 Sign Up  -->
+                    <li class="nav-item p-2">
+                        <button class="btn nav-link" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                            Sign Up
+                        </button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <button class="btn nav-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                        </a>
+
+                    <!-- nav item -4 Login -->
+                    <li class="nav-item p-2">
+                        <button class="btn nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            Login
+                        </button>
                     </li>
 
                 </ul>
@@ -66,12 +71,12 @@
         </div>
     </nav>
 
-    <!-- ─── Sign Up Modal for reader and author ───────────────────────────────────────── -->
+    <!--  Sign up modal -->
     <div class="modal fade" tabindex="-1" id="signUpModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="signUpModal">Sign Up</h1>
+                    <h1 class="modal-title fs-5" id="signUpModalLabel">Sign Up</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                 </div>
                 <div class="modal-body">
@@ -217,12 +222,9 @@
     <section id="featuredArticles"> 
         <div class="container my-3">
             <span class="p-1"></span>
-            <p class="aboutTop-sub my-2 fw-5">Featured articles</p>
-            <!-- <div class="d-flex justify-content-between "> -->
-                <h2 class="about-heading mb-3">Stories worth<br>your time</h2>
-                
-            <!-- </div> -->
-             <p class="about-sub mb-3 text-secondary">Handpicked reads from our editors  covering ideas, culture, science, and <br>the forces shaping our world ! </p>
+            <p class="aboutTop-sub my-2">Featured articles</p>
+            <h2 class="about-heading mb-3">Stories worth<br>your time</h2>  
+            <p class="about-sub mb-3 text-secondary">Handpicked reads from our editors  covering ideas, culture, science, and <br>the forces shaping our world ! </p>
 
             <div class=" my-4 d-flex flex-wrap  gap-4 justify-content-center ">
                     
@@ -348,7 +350,7 @@
     </section>
 
     <footer class="container-fluid d-flex pt-3">
-        <p class="ps-4">InsightHub<strong></strong> · Knowledge Base System</p>
+        <p class="ps-4">InsightHub · Knowledge Base System</p>
         <p class="ms-auto pe-4">© 2026</p>
     </footer>
 

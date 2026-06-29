@@ -1,7 +1,3 @@
-// import { API } from "./config.js";
-// const API = "http://localhost:3000";
-
-
 // function connect to the clean button in the sigup model 
 //used to clear the form 
 
@@ -20,11 +16,9 @@ function clearSignUpForm()
 function clearLoginForm()
 {
     $("#l-userId,#l-password").val("").removeClass("is-valid is-invalid");
-    $("ld-userId").hide().text("");
+    $("#ld-userId").hide().text("");
 }
 
-let emailExists = false;
-let userIdExists = false;
 
 
 // regex 
@@ -110,7 +104,9 @@ $(document).ready(function()
                 userIdExists = true;
                 $(element).removeClass("is-valid").addClass("is-invalid");
                 $("#sd-userId").show().text("User ID already exists");
-            } else {
+            } 
+            
+            else {
                 userIdExists = false;
                 $(element).removeClass("is-invalid").addClass("is-valid");
                 $("#sd-userId").hide().text("");
@@ -303,14 +299,11 @@ $(document).ready(function()
 
             await Swal.fire({ icon: "success", title: "Successfully signed up!", text: "You can now log in." })
             .then(() => {
+                    // Close sign-up modal, open login modal
                     const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
                     loginModal.show();
                 });
 
-            // Close sign-up modal, open login modal
-            const signUpModal = bootstrap.Modal.getInstance(document.getElementById("signUpModal"));
-            if (signUpModal) signUpModal.hide();
-            new bootstrap.Modal(document.getElementById("loginModal")).show();
 
         } catch (err) {
             // console.error("Sign-up error:", err);
@@ -320,43 +313,6 @@ $(document).ready(function()
 
         //----------------login validation --------------------------
 
-        // $("#l-userId") .on('input',function(){validateInput("#l-userId","ld-userId",null,"User ID is required")}) 
-
-        // let userIdTimer;
-
-        // $("#l-userId").on("input", function ()
-        // {
-        //     const element = this;
-        //     const userId = $(this).val().trim();
-
-        //     if (!userId)
-        //     {
-        //         $(element).removeClass("is-valid").addClass("is-invalid");
-        //         $("#ld-userId").show().text("User ID is required");
-        //         return;
-        //     }
-
-        //     clearTimeout(userIdTimer);
-
-        //     userIdTimer = setTimeout(async function ()
-        //     {
-        //         const res = await fetch(`${API}/users?userId=${userId}`);
-        //         const data = await res.json();
-
-        //         if (data.length > 0)
-        //         {
-        //             // User exists -> Valid Login ID
-        //             $(element).removeClass("is-invalid").addClass("is-valid");
-        //             $("#ld-userId").hide().text("");
-        //         }
-        //         else
-        //         {
-        //             // User does not exist
-        //             $(element).removeClass("is-valid").addClass("is-invalid");
-        //             $("#ld-userId").show().text("User ID not found");
-        //         }
-        //     }, 500);
-        // });
 
         $("#loginBtn").on("click", async function (e)
         {
@@ -413,10 +369,6 @@ $(document).ready(function()
                     {
                         window.location.href = "../pages/adminDashboard.html";
                     }
-                    // else
-                    // {
-                    //     Swal.fire({icon: "error",title: "Invalid Role Assigned"});
-                    // }
 
                 })
 
