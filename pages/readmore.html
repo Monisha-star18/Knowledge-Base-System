@@ -128,28 +128,27 @@
 
         <div class="divider"></div>
 
-        
-        
         <!-- Article Content -->
         <div class="container article-wrap">
 
-            <!-- Back button -->
+            <!-- top row -->
             <div class="d-flex justify-content-between">
+
+                <!-- back btn -->
                 <button class="btn-back" onclick="history.back()">
                     <i class="fa-solid fa-arrow-left"></i> Back
                 </button>
 
+                <!-- count to no of readers -->
                 <p class="p-2 rounded-pill text-light article-count"> </p>
 
             </div>
             
-            <!-- Loading state -->
-            <div id="article-loading" class="text-center text-muted my-5">Loading article...</div>
 
-            <!-- Article body (hidden until loaded) -->
+            <!-- Article body  -->
             <div id="article-content" style="display:none;">
 
-                <!-- Hero image -->
+                <!-- article image -->
                 <div class="article-hero">
                     <img id="art-image" src="" alt="Article cover" class="article-hero-img">
                     <div class="article-hero-overlay">
@@ -157,7 +156,7 @@
                     </div>
                 </div>
 
-                <!-- Title & meta -->
+                <!-- Title  -->
                 <div class="article-header">
                     <h1 id="art-title" class="article-title"></h1>
                     <p id="art-subtitle" class="article-subtitle"></p>
@@ -170,7 +169,7 @@
 
                 <div class="article-divider"></div>
 
-                <!-- Intro -->
+                <!-- abstarct -->
                 <div class="article-intro" id="art-intro"></div>
 
                 <!-- Main content -->

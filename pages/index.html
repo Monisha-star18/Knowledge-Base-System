@@ -76,36 +76,45 @@
     <div class="modal fade" tabindex="-1" id="signUpModal">
         <div class="modal-dialog">
             <div class="modal-content">
+                
+                <!--Sign up modal header  -->
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="signUpModalLabel">Sign Up</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
                 </div>
+
+                <!--Sign up modal body  -->
                 <div class="modal-body">
 
+                    <!-- 1.firstname  -->
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="s-firstName" placeholder="monisha">
                         <label for="s-firstName">First Name</label>
                         <small class="text-danger" id="sd-firstname"></small>
                     </div>
 
+                    <!-- 2.lastName  -->
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="s-lastName" placeholder="R">
                         <label for="s-lastName">Last Name</label>
                         <small class="text-danger" id="sd-lastName"></small>
                     </div>
 
+                    <!-- 3.email -->
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="s-email" placeholder="name@gmail.com">
                         <label for="s-email">Email ID</label>
                         <small class="text-danger" id="sd-email"></small>
                     </div>
                     
+                    <!-- 4.dateOfBirth -->
                     <div class="form-floating mb-3">
                         <input type="date" class="form-control" id="s-dateOfBirth" placeholder="DOB" min="1946-01-01" max="2008-12-31">
                         <label for="s-dateOfBirth">Date of Birth</label>
                         <small class="text-danger" id="sd-dateOfBirth"></small>
                     </div>
 
+                    <!-- 5.Gender -->
                     <div class="my-3 ps-2">
                         <label class="form-label">Gender</label>
 
@@ -129,6 +138,7 @@
                         <small class="text-danger" id="sd-gender"></small>
                     </div>
 
+                    <!-- 6.Role -->
                     <div class="form-floating mb-3">
                         <select class="form-select" id="s-role">
                             <option value="" selected>Select Role</option>
@@ -139,12 +149,14 @@
                         <small class="text-danger" id="sd-role"></small>
                     </div>
 
+                    <!-- 7.userId -->
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="s-userId" placeholder="moni-180505">
                         <label for="s-userId">User id</label>
                         <small class="text-danger" id="sd-userId"></small>
                     </div>
 
+                    <!-- 8.Bio -->
                     <div class="form-floating mb-3">
                         <textarea class="form-control" placeholder="Tell us about yourself" id="s-bio" 
                             style="height: 100px" maxlength="200">
@@ -152,46 +164,62 @@
                         <label for="s-bio">Bio</label>
                         <small class="text-danger" id="sd-bio"></small>
                     </div>
+
+                    <!-- 9. Password-->
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="s-password" placeholder="*********">
                         <label for="s-password">Password</label>
                         <small class="text-danger" id="sd-password"></small>
                     </div>
+
+                    <!-- 10.conformPassword -->
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="s-conformPassword" placeholder="*********">
                         <label for="s-conformPassword">Confirm password</label>
                         <small class="text-danger" id="sd-conformPassword"></small>
                     </div>
 
-
                 </div> 
+
+                <!--Sign up modal footer  -->
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" onclick="clearSignUpForm()">Clear</button>
                     <button class="btn btn-success" id="register">Register</button>
                 </div>
+
             </div>
         </div>
     </div>
 
-    <!-- ─── Login Modal for reader,author and admin───────────────────────────────────────── -->
+    <!--  Login modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+
+                <!--  Login modal header-->
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="loginModalLabel">Login</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
+                <!--  Login modal body-->
                 <div class="modal-body">
+
+                    <!-- userid - login value -->
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="l-userId" placeholder="ABDE123">
                         <label for="l-userId">User ID</label>
                         <small class="text-danger" id="ld-userId"></small>
                     </div>
+
+                    <!-- password - login value -->
                     <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="l-password" placeholder="*********">
                         <label for="l-password">Password</label>
                     </div>
                 </div>
+
+                <!-- Login modal footer -->
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" onclick="clearLoginForm()">Clear</button>
                     <button class="btn btn-success" id="loginBtn">Login</button>
@@ -200,9 +228,12 @@
         </div>
     </div>
 
+    <!-- Landing section  -->
     <section class="landing" id="landing">
         <div class="container">
             <div class="row landing-content">
+
+                <!-- Landing section  left -->
                 <div class="col-sm-12 col-md-12 col-lg-6 p-5 d-flex flex-column justify-content-center  " >
                     <h1 class="mt-4 mb-3">Create<br> and <br> Share <br> Human Stories.</h1>
                     <h3 class=" my-5">A place to read, write, and deepen your understanding</h3>
@@ -211,6 +242,8 @@
                         <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">View articles</button>
                     </div>
                 </div>
+
+                <!-- Landing section  right -->
                 <div class="col-sm-12 col-md-12 col-lg-6 p-5 d-flex flex-column justify-content-center " >
                     <img src="../asserts/images/svg/Rocket research.svg" alt="Illustration" class="landing-svg">
                 </div>
@@ -219,26 +252,35 @@
     </section>
 
     
-
+    <!-- featured Articles section  -->
     <section id="featuredArticles"> 
         <div class="container my-3">
+
+            <!-- top row  -->
             <span class="p-1"></span>
             <p class="aboutTop-sub my-2">Featured articles</p>
             <h2 class="about-heading mb-3">Stories worth<br>your time</h2>  
             <p class="about-sub mb-3 text-secondary">Handpicked reads from our editors  covering ideas, culture, science, and <br>the forces shaping our world ! </p>
 
-            <div class=" my-4 d-flex flex-wrap  gap-4 justify-content-center ">
+                <!-- card container -->
+                <div class=" my-4 d-flex flex-wrap  gap-4 justify-content-center ">
                     
                     <!-- card 1  -->
-                    <div class="card col-12   col-lg-3" >
+                    <div class="card col-12 col-lg-3" >
+
+                        <!-- card header -->
                         <div class="card-header d-flex justify-content-center p-5" style="background: linear-gradient(135deg,#d6e8f5,#a0c8f0);">
                             📝
                         </div>
+
+                        <!-- card body -->
                         <div class="card-body">
                             <p class="card-title mb-3 text-primary">Technology<p>
                             <p class="card-subtitle mb-3">The editors using AI to fact-check at scale</p>
                             <p class="card-text  mb-1">Newsrooms are quietly deploying AI tools not to write stories, but to verify them — raising new questions about editorial trust.</p>
                         </div>
+
+                        <!-- card footer -->
                         <div class="card-footer">
                             <div class="top d-flex align-items-center gap-3">
                                 <span class="rounded-circle bg-info text-white d-flex justify-content-center align-items-center p-2" style="background: linear-gradient(135deg,#d6e8f5,#a0c8f0);">
@@ -259,14 +301,20 @@
                     
                     <!-- card 2  -->
                     <div class="card col-12  col-lg-3" >
+
+                        <!-- card header -->
                         <div class="card-header d-flex justify-content-center p-5" style="background: linear-gradient(135deg,#fde8d6,#f5c3a0);">
                             🤖
                         </div>
+
+                        <!-- card body -->
                         <div class="card-body">
                             <p class="card-title mb-3 text-danger">Technology<p>
                             <p class="card-subtitle mb-3">The editors using AI to fact-check at scale</p>
                             <p class="card-text  mb-1">Newsrooms are quietly deploying AI tools not to write stories, but to verify them — raising new questions about editorial trust.</p>
                         </div>
+
+                        <!-- card footer -->
                         <div class="card-footer">
                             <div class="top d-flex align-items-center gap-3">
                                 <span class="rounded-circle text-white d-flex justify-content-center align-items-center p-2 " style="background: linear-gradient(135deg,#fde8d6,#f5c3a0);">
@@ -282,19 +330,24 @@
                                 <span class="empty">&#9734;</span>
                             </div>
                         </div>
-                        
-                        
+
                     </div>
                     <!-- card 3  -->
                     <div class="card col-12  col-lg-3">
+
+                        <!-- card header -->
                         <div class="card-header d-flex justify-content-center p-5"  style=" background: linear-gradient(135deg,#d6f5e3,#a0e0be);">
                            🔬
                         </div>
+
+                        <!-- card body -->
                         <div class="card-body">
                             <p class="card-title mb-3 text-success">Technology<p>
                             <p class="card-subtitle mb-3">The editors using AI to fact-check at scale</p>
                             <p class="card-text  mb-1">Newsrooms are quietly deploying AI tools not to write stories, but to verify them — raising new questions about editorial trust.</p>
                         </div>
+
+                        <!-- card footer -->
                         <div class="card-footer">
                             <div class="top d-flex align-items-center gap-3">
                                 <span class="rounded-circle bg-success text-white d-flex justify-content-center align-items-center p-2" style=" background: linear-gradient(135deg,#d6f5e3,#a0e0be);">
@@ -311,55 +364,64 @@
                             </div>
                         </div>
                     
-                        
                     </div>
-            </div>
-            
-
+                </div>
         </div>
     </section>
 
 
+    <!-- connect section  -->
     <section id="connect"> 
         <div class="container p-5">
             <div class="row ">
 
+                <!-- left of page -->
                 <div class="col-sm-12 col-md-12 col-lg-6">
                     <img src="../asserts/images/svg/image.svg" alt="img" class="img-fluid">
                 </div>
 
+                <!-- right of page -->
                 <div class="col-sm-12 col-md-12 col-lg-6 d-flex flex-column align-items-end text-end mt-5 pt-5">
+
+                    <!-- right top row -->
                     <p class="top-sub mb-3">Stay connected with us</p>
                     <h2 class="connect-heading mb-4">Curious! <br> Stay in touch <br>through all ways</h2>
+
+                    <!-- right social icons -->
                     <div class="d-flex gap-5 justify-content-center mt-4">
+                        
+                        <!-- facebook -->
                         <a href="https://www.facebook.com/people/Insight-Hub/61588532800498/#">
                             <i class="fa-brands fa-facebook fa-2x" style="color: rgb(30, 48, 80);"></i>
                         </a>
+
+                        <!--instagram  -->
                         <a href="https://www.instagram.com/insighthubid/">
                             <i class="fa-brands fa-square-instagram fa-2x" style="color: rgb(30, 48, 80);"></i>
                         </a>
+
+                        <!-- linkedin -->
                         <a href="https://www.linkedin.com/company/insighthub-team/">
                             <i class="fa-brands fa-linkedin fa-2x" style="color: rgb(30, 48, 80);"></i>
                         </a>
+
+                        <!-- twitter -->
                         <a href="#">
                             <i class="fa-brands fa-square-x-twitter fa-2x" style="color: rgb(30, 48, 80);"></i>
                         </a>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
+    <!-- footer section  -->
     <footer class="container-fluid d-flex pt-3">
         <p class="ps-4">InsightHub · Knowledge Base System</p>
         <p class="ms-auto pe-4">© 2026</p>
     </footer>
 
-    
-
-    
-
-    
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

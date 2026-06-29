@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Admin Dashboard – InsightHub</title>
     <link rel="icon" type="image/svg+xml" href="../asserts/images/svg/readme-brands-solid-full.svg">
 
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- external css file -->
     <link href="../styles/theme.css" rel="stylesheet">
     <link href="../styles/adminDashboard.css" rel="stylesheet">
 </head>
@@ -16,19 +23,29 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container d-flex align-items-center">
+
+            <!-- navbar Logo -->
             <a class="navbar-brand" href="#">
                 <i class="fa-brands fa-readme"></i>InsightHub
             </a>
+
+            <!-- humburger button  -->
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
                 <i class="fas fa-bars"></i>
             </button>
+
+            <!-- navbar menu -->
             <div class="collapse navbar-collapse" id="navbarMenu">
                 <ul class="navbar-nav ms-auto d-flex align-items-center gap-2">
+                    
+                    <!-- username -->
                     <li class="nav-item">
                         <span class="nav-username" id="nav-username" style="color:#94A3B8; font-size:0.88rem;">—</span>
                     </li>
+                    
+                    <!-- usericon -->
                     <li class="nav-item">
-                        <button class="btn btn-icon" data-bs-toggle="offcanvas" data-bs-target="#authorOffcanvas" title="Profile" id="Profile" style="background:none;border:none;">
+                        <button class="btn btn-icon" data-bs-toggle="offcanvas" data-bs-target="#adminOffcanvas" title="Profile" id="Profile" style="background:none;border:none;">
                             <i class="fa-solid fa-circle-user" style="font-size:26px; color:#94A3B8;" aria-hidden="true"></i>
                         </button>
                     </li>
@@ -38,14 +55,17 @@
     </nav>
 
     <!-- Offcanvas – Author Profile -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="authorOffcanvas" aria-labelledby="authorOffcanvasLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="adminOffcanvas" aria-labelledby="adminOffcanvasLabel">
+        
+        <!-- canvas heading -->
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="authorOffcanvasLabel">
+            <h5 class="offcanvas-title" id="adminOffcanvasLabel">
                 <i class="fa-solid fa-circle-user me-2"></i>User Profile
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         
+         <!-- canvas body -->
         <div class="offcanvas-body">
 
             <!-- Profile Header -->
@@ -96,10 +116,10 @@
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- page -->
     <div class="container">
 
-        <!-- Header row -->
+        <!-- header row -->
         <div class="row top-row">
             <div class="col-6">
                 <h1 class="title mt-4">Admin Dashboard</h1>
@@ -107,8 +127,6 @@
             </div>
         </div>
 
-
-        
         <!-- Filter Bar -->
         <div class="filter-bar d-flex gap-2 mt-3" id="filters">
             <button class="btn active" id="all-btn">All</button>
@@ -127,16 +145,21 @@
             </div>
         </div>
 
+        <!-- Cards -->
+        <div id="cards-container"> </div>
+
         <!-- Review Modal -->
         <div class="modal fade" id="reviewModal" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
 
+                    <!-- review modal header -->
                     <div class="modal-header">
                         <h5 class="modal-title" id="reviewTitle">Review Article</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
-
+                    
+                    <!-- review modal body -->
                     <div class="modal-body">
                         <label class="form-label">Remark <span class="text-danger">*</span></label>
                         <textarea class="form-control" id="reviewRemark" rows="4"
@@ -147,6 +170,7 @@
                         </small>
                     </div>
 
+                    <!-- review modal footer -->
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-bs-dismiss="modal">
                             Cancel
@@ -161,15 +185,19 @@
             </div>
         </div>
 
-        <!-- Cards -->
-        <div id="cards-container">
-        </div>
     </div>
 
 
+    <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- external script file -->
     <script src="../scripts/shared.js"></script>
     <script src="../scripts/adminDashboard.js"></script>
 
