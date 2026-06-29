@@ -1,5 +1,5 @@
 // import { API } from "./config.js";
-const API = "http://localhost:3000";
+// const API = "http://localhost:3000";
 
 
 // function connect to the clean button in the sigup model 

@@ -1,5 +1,5 @@
 // import { API } from "./config.js";
-const API = "http://localhost:3000";
+// const API = "http://localhost:3000";
 
 
 let loggedUser = null;
@@ -13,30 +13,7 @@ $(document).ready(async function () {
     loggedUser = JSON.parse(userData);
 
 
-    // 2. fill Navbar & Profile Sidebar
-    setupProfile();
-
-    // fill Profile Sidebar Fields using the login deatils 
-    function setupProfile() 
-    {
-
-        const fullName = `${loggedUser.firstName} ${loggedUser.lastName}`;
-        $("#nav-username").text(fullName);
-
-        $("#Name").text(fullName);
-        $("#Role").text(loggedUser.role);
-        $("#UserId").text(loggedUser.userId);
-        $("#Bio").text(loggedUser.bio || "No bio available.");
-        $("#Email").text(loggedUser.email);
-        
-        const dob = new Date(loggedUser.dateOfBirth).toLocaleDateString();
-        $("#Dob").text(dob);
-
-        $("#Gender").text(loggedUser.gender);
-
-        const joined = new Date(loggedUser.createdDate).toLocaleDateString();
-        $("#Joined").text(joined);
-    }
+   setupProfile(loggedUser); 
 
     // 3. Initial fetch and render
     await fetchAndRenderArticles();

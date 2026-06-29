@@ -1,6 +1,3 @@
-// import { API } from "./config.js";
-
-const API = "http://localhost:3000";
 
 // Display the date in the top
 const today = new Date();

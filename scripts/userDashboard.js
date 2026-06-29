@@ -1,6 +1,3 @@
-// import { API } from "./config.js";
-const API = "http://localhost:3000";
-
 
 let loggedUser = null;
 let localArticles = []; 
@@ -11,33 +8,10 @@ $(document).ready(async function () {
     // take the login user data 
     const userData = localStorage.getItem("loggedUser");
     loggedUser = JSON.parse(userData);
-    console.log(loggedUser)
 
-
-    // 2. fill Navbar & Profile Sidebar
-    setupProfile();
-
-    // fill Profile Sidebar Fields using the login deatils 
-    function setupProfile() 
-    {
-
-        const fullName = `${loggedUser.firstName} ${loggedUser.lastName}`;
-        $("#nav-username").text(fullName);
-
-        $("#Name").text(fullName);
-        $("#Role").text(loggedUser.role);
-        $("#UserId").text(loggedUser.userId);
-        $("#Bio").text(loggedUser.bio || "No bio available.");
-        $("#Email").text(loggedUser.email);
-        
-        const dob = new Date(loggedUser.dateOfBirth).toLocaleDateString();
-        $("#Dob").text(dob);
-
-        $("#Gender").text(loggedUser.gender);
-
-        const joined = new Date(loggedUser.createdDate).toLocaleDateString();
-        $("#Joined").text(joined);
-    }
+    setupProfile(loggedUser); 
+     
+    
 
     // 3. Initial fetch and render
     await fetchAndRenderArticles();
@@ -115,15 +89,6 @@ function renderCards() {
         } else {
             statusBadge = `<span class="badge-pending">⏳ Pending</span>`;
             footerRow = `<div class="card-date-row"><i class="fa-regular fa-clock"></i> Awaiting review</div>`;
-            actionButtons = `
-                // <div class="card-actions">
-                //     <button class="btn-card-edit" onclick="window.location.href='../pages/addArticle.html?id=${art.id}'">
-                //         <i class="fa-solid fa-pen"></i> Accept
-                //     </button>
-                //     <button class="btn-card-delete" onclick="deleteArticle('${art.id}')">
-                //         <i class="fa-solid fa-trash"></i> Reject
-                //     </button>
-                // </div>`;
         }
 
         const cardHtml = `
@@ -148,27 +113,10 @@ function renderCards() {
                         <span class="card-meta-item">
                             <i class="fa-solid fa-tag"></i> ${art.category.charAt(0).toUpperCase() + art.category.slice(1)}
                         </span>
-                    </div>
-                   
-                    ${actionButtons}
+                    </div>                   
                 </div>
             </div>`;
         container.prepend(cardHtml);
     });
-}
-
-
-
-// Logout execution 
-function handleLogout()
-{
-    Swal.fire({title: 'LogOut',text:'Do you want to Log out',icon: 'warning',showCancelButton: true})
-        .then(result => 
-        {
-            if (result.isConfirmed) {
-                localStorage.removeItem("loggedUser");
-                window.location.href = "../pages/index.html";
-            }
-        });
 }
 
