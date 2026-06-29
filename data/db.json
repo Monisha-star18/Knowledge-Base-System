@@ -288,11 +288,13 @@
       "content": "This article discusses technology in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth.  in depth. ",
       "image": "https://picsum.photos/seed/article6/800/300",
       "createdAt": "29 Jun 2026",
-      "status": "pending",
+      "status": "approved",
       "id": "ART1006",
-      "reviewDate": null,
+      "reviewDate": "29/06/2026",
       "updatedAt": "Mon Jun 29 2026",
-      "isDeleted": false
+      "isDeleted": false,
+      "remark": "It is approved",
+      "reviewedBy": "SANJAY123"
     },
     {
       "authorId": "bN4TrY8mLp2",
@@ -438,7 +440,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 58
+      "views": 59
     },
     {
       "authorId": "cX6UwR5nHs9",
@@ -473,7 +475,7 @@
       "isDeleted": false,
       "remark": "good",
       "reviewedBy": "SANJAY123",
-      "views": 1
+      "views": 2
     },
     {
       "authorId": "dJ8QvM1zKe4",
@@ -492,7 +494,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 32
+      "views": 34
     },
     {
       "authorId": "dJ8QvM1zKe4",
@@ -529,7 +531,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 10
+      "views": 12
     },
     {
       "authorId": "dJ8QvM1zKe4",
@@ -564,7 +566,7 @@
       "isDeleted": false,
       "remark": "aaaaaaaaaaaaa",
       "reviewedBy": "SANJAY123",
-      "views": 100
+      "views": 101
     },
     {
       "authorId": "eP3HsK7wNc5",
@@ -583,7 +585,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 63
+      "views": 64
     },
     {
       "authorId": "eP3HsK7wNc5",
@@ -620,7 +622,7 @@
       "isDeleted": false,
       "remark": "Well written.",
       "reviewedBy": "SANJAY123",
-      "views": 14
+      "views": 16
     },
     {
       "authorId": "eP3HsK7wNc5",
@@ -655,7 +657,7 @@
       "updatedAt": "Mon Jun 29 2026",
       "remark": "good",
       "reviewedBy": "SANJAY123",
-      "views": 4
+      "views": 10
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

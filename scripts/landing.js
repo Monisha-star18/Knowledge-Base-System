@@ -26,6 +26,8 @@ const nameRegex = /^[a-zA-Z\s]{3,30}$/;
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
 const dateRegex = /^(\d{4})-(\d{2})-(\d{2})$/
+const userIdRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@&]{1,8}$/;
+
 
 
 //function that dont allow empty date and allow only valid date
@@ -86,7 +88,16 @@ $(document).ready(function()
     });
 
     // User ID
-    $("#s-userId") .on('input',function(){validateInput("#s-userId","#sd-userId",null,"User ID is required")}) 
+    $("#s-userId") .on('input',function(){$("#s-userId").on("input", function () {
+    validateInput(
+        "#s-userId",
+        "#sd-userId",
+        userIdRegex,
+        "User ID is required",
+        "User ID must be 1-8 characters and contain at least one letter and one number. Only @ and & are allowed as special characters."
+    );}) 
+    
+});
 
     let userIdTimer;
     $("#s-userId").on("input", function () 
@@ -95,6 +106,17 @@ $(document).ready(function()
         const userId = $(this).val().trim();
 
         if (!userId) return;
+
+        if (!userIdRegex.test(userId)) {
+           
+
+            $("#s-userId").removeClass("is-valid").addClass("is-invalid");
+            $("#sd-userId")
+                .show()
+                .text("User ID must be 1-8 characters with letters and numbers.");
+
+            return;
+        }
 
         clearTimeout(userIdTimer);
         userIdTimer = setTimeout(async function () {
@@ -275,15 +297,15 @@ $(document).ready(function()
 
             // Build user object
             const userData = {
-                firstName:   $("#s-firstName").val().trim(),
-                lastName:    $("#s-lastName").val().trim(),
-                email:       email,
-                userId:      userId,
-                password:    $("#s-password").val().trim(),
+                firstName: $("#s-firstName").val().trim(),
+                lastName: $("#s-lastName").val().trim(),
+                email: email,
+                userId: String($("#s-userId").val().trim()), // Store as string
+                password: $("#s-password").val().trim(),
                 dateOfBirth: $("#s-dateOfBirth").val(),
-                gender:      $("input[name='gender']:checked").val(),
-                role:        $("#s-role").val(),
-                bio:         $("#s-bio").val().trim(),
+                gender:$("input[name='gender']:checked").val(),
+                role:$("#s-role").val(),
+                bio:  $("#s-bio").val().trim(),
                 createdDate: new Date().toISOString()
             };
 
@@ -303,6 +325,9 @@ $(document).ready(function()
 
             await Swal.fire({ icon: "success", title: "Successfully signed up!", text: "You can now log in." })
             .then(() => {
+
+                    const signupModal = bootstrap.Modal.getInstance(document.getElementById("signUpModal"));
+                    signupModal.hide();
                     // Close sign-up modal, open login modal
                     const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
                     loginModal.show();
@@ -324,6 +349,8 @@ $(document).ready(function()
             const userId = $("#l-userId").val().trim();
             const password = $("#l-password").val().trim();
 
+            console.log(userId)
+
             if (!userId || !password)
             {
                 Swal.fire({icon: "warning",title: "Please enter User ID and Password"});
@@ -334,6 +361,8 @@ $(document).ready(function()
             {
                 const result = await fetch(`${API}/users?userId=${userId}`);
                 const users = await result.json();
+
+                console.log()
 
                 if (users.length === 0)
                 {
