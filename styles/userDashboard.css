@@ -11,7 +11,7 @@
     font-size: 1.15rem;
     letter-spacing: -0.02em;
 }
-.navbar-brand i { color: var(--color-accent); margin-right: 6px; }
+.navbar-brand i { color: var(--white-text); margin-right: 6px; }
 .navbar-toggler { border: none; }
 .navbar-toggler .fas { color: var(--white-text); }
 
@@ -52,47 +52,9 @@ p.sub {
 .oc-name { font-size: 1.05rem; font-weight: 700; color: var(--color-primary-dark); }
 .oc-role { font-size: 0.8rem; color: #94A3B8; margin-bottom: 1rem; }
 
-.section-sep {
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
-    text-transform: uppercase; color: #CBD5E1;
-    margin: 1.2rem 0 0.6rem; padding-bottom: 0.3rem;
-    border-bottom: 1px solid #F1F5F9;
-}
-.field-group { margin-bottom: 0.85rem; }
-.field-label {
-    display: block; font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 0.07em; text-transform: uppercase;
-    color: #94A3B8; margin-bottom: 0.2rem;
-}
-.field-input {
-    display: block; width: 100%;
-    background: #F8FAFC; border: 1px solid #E2E8F0;
-    border-radius: 8px; padding: 0.42rem 0.8rem;
-    font-size: 0.86rem; color: var(--color-primary-dark); outline: none;
-}
-
 /* ── Divider ─────────────────────────────────────────────────────── */
 .divider { border-top: 1px solid #48494a; margin: 1rem 0; }
 
-
-
-
-/* ── Filter Bar ──────────────────────────────────────────────────── */
-
-
-#all-btn      { background:#F1F5F9; color:#475569; border-radius:8px; border-bottom:2.5px solid #94A3B8; font-size:0.83rem; font-weight:600; padding:0.38rem 1rem; }
-#approved-btn { background:#F0FDF4; color:#166534; border-radius:8px; border-bottom:2.5px solid #16A34A; font-size:0.83rem; font-weight:600; padding:0.38rem 1rem; }
-#pending-btn  { background:#FFFBEB; color:#92400E; border-radius:8px; border-bottom:2.5px solid #D97706; font-size:0.83rem; font-weight:600; padding:0.38rem 1rem; }
-#rejected-btn { background:#FFF1F2; color:#9F1239; border-radius:8px; border-bottom:2.5px solid #E11D48; font-size:0.83rem; font-weight:600; padding:0.38rem 1rem; }
-
-#all-btn.active      { border:2px solid #94A3B8; box-shadow:0 3px 10px rgba(148,163,184,0.3); }
-#approved-btn.active { border:2px solid #16A34A; box-shadow:0 3px 10px rgba(22,163,74,0.25); }
-#pending-btn.active  { border:2px solid #D97706; box-shadow:0 3px 10px rgba(217,119,6,0.25); }
-#rejected-btn.active { border:2px solid #E11D48; box-shadow:0 3px 10px rgba(225,29,72,0.25); }
-
-#all-btn:hover, #approved-btn:hover, #pending-btn:hover, #rejected-btn:hover {
-    transform: translateY(-2px); transition: transform 0.18s ease;
-}
 
 /* ── Search ──────────────────────────────────────────────────────── */
 .search-box {
@@ -135,10 +97,6 @@ p.sub {
     object-fit: cover; display: block;
 }
 
-.card-status-pill {
-    position: absolute; top: 10px; right: 10px;
-}
-
 .article-card .card-body {
     padding: 1rem 1.15rem 1.1rem;
     background: #fff;
@@ -167,56 +125,10 @@ p.sub {
 }
 .card-meta-item i { font-size: 13px; color: #000000; }
 
-.card-date-row {
-    margin-top: 0.4rem;
-    font-size: 0.75rem; color: #94A3B8;
-    display: flex; align-items: center; gap: 4px;
-}
-.card-date-row i { font-size: 13px; }
-.card-date-row.approved { color: #16A34A; }
-.card-date-row.approved i { color: #16A34A; }
-.card-date-row.rejected { color: #E11D48; }
-.card-date-row.rejected i { color: #E11D48; }
 
 .card-actions {
     margin-top: auto;
     padding-top: 0.75rem;
     border-top: 1px solid #F1F5F9;
     display: flex; gap: 0.5rem;
-}
-.btn-card-edit {
-    flex: 1; background: var(--color-accent-light);
-    color: var(--color-accent); border: none;
-    border-radius: 7px; font-size: 0.8rem; font-weight: 600;
-    padding: 0.38rem 0; cursor: pointer;
-    transition: background 0.15s;
-    display: flex; align-items: center; justify-content: center; gap: 5px;
-}
-.btn-card-edit:hover { background: #E0E7FF; }
-
-.btn-card-delete {
-    flex: 1; background: #FFF1F2;
-    color: #E11D48; border: none;
-    border-radius: 7px; font-size: 0.8rem; font-weight: 600;
-    padding: 0.38rem 0; cursor: pointer;
-    transition: background 0.15s;
-    display: flex; align-items: center; justify-content: center; gap: 5px;
-}
-.btn-card-delete:hover { background: #FFE4E6; }
-
-/* ── Badges ──────────────────────────────────────────────────────── */
-.badge-approved {
-    background: #DCFCE7; color: #166534;
-    border-radius: 20px; padding: 3px 11px;
-    font-size: 0.72rem; font-weight: 700; white-space: nowrap;
-}
-.badge-pending {
-    background: #FFFBEB; color: #92400E;
-    border-radius: 20px; padding: 3px 11px;
-    font-size: 0.72rem; font-weight: 700; white-space: nowrap;
-}
-.badge-rejected {
-    background: #FFF1F2; color: #9F1239;
-    border-radius: 20px; padding: 3px 11px;
-    font-size: 0.72rem; font-weight: 700; white-space: nowrap;
 }

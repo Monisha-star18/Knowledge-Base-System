@@ -1,10 +1,14 @@
 
 let loggedUser = null;
 let localArticles = []; 
-let currentFilter = "all";
 
 $(document).ready(async function () {
 
+    // check for a user 
+    if (!loggedUser) {
+        window.location.href = "../pages/index.html";
+        return;
+    }
     // take the login user data 
     const userData = localStorage.getItem("loggedUser");
     loggedUser = JSON.parse(userData);
@@ -50,8 +54,8 @@ function renderCards() {
     // Filter array
     let filtered = localArticles.filter(art => {
         return art.title.toLowerCase().includes(searchVal) || 
-                              art.subtitle.toLowerCase().includes(searchVal) || 
-                              art.category.toLowerCase().includes(searchVal);
+                            art.subtitle.toLowerCase().includes(searchVal) || 
+                            art.category.toLowerCase().includes(searchVal);
     });
 
     if (filtered.length === 0) {
@@ -73,13 +77,10 @@ function renderCards() {
                     <div class="card-title">${art.title}</div>
                     <div class="card-sub">${art.subtitle}</div>
                     <div class="divider"></div>
-                    <div class="card-meta-row d-flex flex-column">
+                    <div class="card-meta-row d-flex flex-column"> 
                         <span class="card-meta-item">
-                             <i class="fa-solid fa-pen"></i> Author : ${art.createdAt}
+                             <i class="fa-solid fa-pen"></i> Author : ${art.authorName}
                         </span>
-
-
-                        //check above 
                         <span class="card-meta-item">
                             <i class="fa-solid fa-calendar-days"></i> Posted on : ${art.createdAt}
                         </span>

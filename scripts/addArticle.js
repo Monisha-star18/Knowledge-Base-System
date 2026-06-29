@@ -152,6 +152,7 @@ document.getElementById('articleForm').addEventListener('submit', async function
 
             const article = {
                 authorId:   loggedUser.id,
+                authorName : `${loggedUser.firstName} ${loggedUser.lastName}`,
                 title:      document.getElementById('articleTitle').value.trim(),
                 category:   document.getElementById('articleCategory').value,
                 subtitle:   document.getElementById('articleSubtitle').value.trim(),
